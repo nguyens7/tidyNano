@@ -1,0 +1,15 @@
+Package: tidyNano
+Type: Package
+Title: A framework to Tidy and Analyze Nanoparticle Data
+Version: 0.1.0
+Author: Sean Nguyen
+Maintainer: The package maintainer <nguyens7@msu.edu>
+Description: A framework to clean, calculate summary statistics, 
+    and plot raw Nanosight data.  The package utilizes the principles of 
+    the tidyverse to properly format data in a 'tidy' format such that rows represent 
+    one observation and columns represent variables.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: tidyverse,lazyeval, readxl
+RoxygenNote: 6.0.1
