@@ -16,6 +16,7 @@
 nanocount <- function(df, ..., name = "Particle", param_var, na.rm = TRUE) {
 
   group_var <- quos(...)
+  param_var <- enquo(param_var)
   N <- paste(name, "N" , sep = "_")
   total <- paste(name, "count" , sep = "_")
 
