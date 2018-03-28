@@ -4,7 +4,7 @@
 \alias{nanoShapiro}
 \title{A nested Normality Test}
 \usage{
-nanoShapiro(df, ..., value, variables)
+nanoShapiro(df, ..., value)
 }
 \arguments{
 \item{df}{A dataframe.}

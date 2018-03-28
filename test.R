@@ -17,6 +17,10 @@ data2 <- data1 %>%
            name = "Count",
            param_var = Particle_count)
 
+data2 %>%
+  nanoShapiro(Injection, value = Count_mean)
+
+
 ANOVA <- function(df){
   aov(Count_mean ~ Animal, data = df)
 }
@@ -44,13 +48,13 @@ testtt <- data2 %>%
   group_by(Injection) %>%
   nest() %>%
   mutate(
-         Shapiro = map(data, ~shapiro.test(.x$Count_mean))) %>%
-         #ANOVA = map(data, ~aov(Count_mean ~ Animal, data = .x))
-  unnest(Shapiro %>%  map(tidy)) %>%
+         Shapiro = map(data, ~shapiro.test(.x$Count_mean)),
+         glance = map(Shapiro, glance)) %>%
+  unnest(glance, .drop = TRUE) %>%
   mutate(Normal_dist = case_when(p.value >.05 ~ TRUE,
                                  p.value <.05 ~ FALSE ),
-         Statistical_test = case_when(Normal_dist == TRUE ~ "Perform ANOVA",
-                                      Normal_dist == FALSE ~ "Perform Kruskal-Wallis"))
+         Statistical_test = case_when(Normal_dist == TRUE ~ "Perform parametric test",
+                                      Normal_dist == FALSE ~ "Perform non-parametric test"))
 ?map2
 
 testtt$data[1]
@@ -183,11 +187,10 @@ test4$data[1]
 test5 <- test4 %>%
   mutate( kruskal = map(data, ~kruskal.test(Particle_count ~ Sample, data = .x)))
 
-test5$ANOVA[1]
+test5$kruskal[1]
 test5 %>%
   unnest(kruskal %>% map(glance))
 
-test5$ANOVA[1]
 
 dftest1 %>%
   # filter(particle_size <300) %>%

@@ -12,7 +12,7 @@
 #' @export
 
 
-nanoShapiro <- function(df, ..., value, variables) {
+nanoShapiro <- function(df, ..., value) {
 
   group_var <- quos(...)
   value <- enquo(value)
@@ -21,6 +21,13 @@ nanoShapiro <- function(df, ..., value, variables) {
   df %>%
     group_by(!!! group_var) %>%
     nest() %>%
-    mutate( Shapiro = map(data, ~shapiro.test(pull(.x, quo_name(value)))))    # perform a normality test
+    mutate(
+        Shapiro = map(data, ~shapiro.test(pull(.x, quo_name(value)))),  # perform a normality test
+        glance = map(Shapiro, glance)) %>%
+    unnest(glance, .drop = TRUE) %>%
+    mutate(Normal_dist = case_when(p.value >.05 ~ TRUE,
+                                   p.value <.05 ~ FALSE ),
+           Statistical_test = case_when(Normal_dist == TRUE ~ "Perform parametric test",
+                                        Normal_dist == FALSE ~ "Perform non-parametric test"))
 
 }

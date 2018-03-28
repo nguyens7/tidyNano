@@ -14,24 +14,6 @@
 #' @keywords aggregate, summarize, summary statistics
 #' @export
 
-# nanolyze <- function(df, ..., name = "Param", param_var, na.rm = TRUE) {
-#
-#   param_var <- enquo(param_var)
-#   N <- paste(name, "N" , sep = "_")
-#   mean <- paste(name, "mean" , sep = "_")
-#   sd <- paste(name, "sd" , sep = "_")
-#   se <- paste(name, "se" , sep = "_")
-#
-#   df %>%
-#     group_by_(.dots = lazyeval::lazy_dots(...)) %>%
-#     summarise(!!N := length(na.omit(!!param_var)),
-#               !!mean := mean(!!param_var, na.rm = na.rm),
-#               !!sd := sd(!!param_var, na.rm = na.rm),
-#               !!se := sd(!!param_var, na.rm = na.rm) /
-#                         sqrt(length(na.omit(!!param_var)))
-#               )
-#   }
-
 
 nanolyze <- function(df, ..., name = "Param", param_var, na.rm = TRUE) {
 

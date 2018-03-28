@@ -7,7 +7,7 @@
 nanoimport(file)
 }
 \arguments{
-\item{csv}{A .csv file.}
+\item{csv}{A .csv file from a Malvern Nanosight machine.}
 }
 \value{
 Dataframe of nanosight values.

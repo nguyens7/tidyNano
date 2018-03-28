@@ -13,11 +13,11 @@ nanocount(df, ..., name = "Particle", param_var, na.rm = TRUE)
 
 \item{name}{Prefix name to sum function.}
 
-\item{param_var}{The numerical value that you want to summarize.}
+\item{param_var}{The numerical value that you want to sum.}
 }
 \value{
 Sum of particle count \code{parm_var} grouped by \code{...}.
-Output of tidy dataframe of  sums grouped by \code{...} labeled according to 'name' argument.
+Output of tidy dataframe of sums grouped by \code{...} labeled according to 'name' argument.
 }
 \description{
 This function allows you aggregate or summarize your data by groups.
