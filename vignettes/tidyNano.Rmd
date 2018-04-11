@@ -1,0 +1,135 @@
+---
+title: "tidyNano Vignette"
+author: "Sean Nguyen"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# tidyNano Vignette
+
+tidyNano is a package that imports raw Nanosight data and faciliates the process of tidying the data so it is suitable for visualizing with ggplot2  and data manipulation with dplyr.  tidyNano also has functions to facilitate the rapid generation of summary statistics by groups to assist with calculating technical replicate and within group mean, standard deviation, and standard error.
+```{r message=FALSE, warning=FALSE}
+library(tidyNano)
+library(tidyverse)
+```
+
+##nanoimport
+This is an example raw Nanosight .csv output file and is not easily imported with `read.csv()`
+```{r}
+file <- system.file("extdata", "beads.csv", package = "tidyNano")
+
+read.csv(file) %>% head()
+```
+`nanoimport` is a function that extracts the particle data from raw a nanosight .csv file and creates a dataframe that is suitable for cleaning within R.
+```{r}
+data <- nanoimport(file) 
+
+data
+```
+
+## nanotidy
+`nanotidy` is a function that facilitates the conversion of a dataframe to make it tidy for easy data visualization with ggplot2 and data manipulation with dplyr.
+```{r}
+nanoimport(file) %>% 
+  nanotidy(2:13) 
+```
+
+
+## data tidying
+We can use the existing tools in the tidyr and dplyr package to futher format the data so it is truly in the tidy format.
+```{r}
+tidy_data <- nanoimport(file) %>% 
+  nanotidy(2:13) %>% 
+  separate(Sample, into = c("Sample", "Dilution", "filter", "injection", "Tech_rep"),
+           sep = "_", convert = TRUE) %>% 
+  mutate_at(vars(Sample,filter:Tech_rep), as.factor) %>% 
+  mutate(True_count = Dilution * Count)
+
+tidy_data
+```
+
+Once the data is in the tidy format it can be easily visualized using existing libraries such as ggplot2.
+```{r}
+tidy_data %>% 
+  ggplot(aes(x = particle_size, y = True_count, color = Tech_rep)) +
+  geom_line(size = 1) +
+  facet_wrap(injection~filter)
+```
+
+
+## nanolyze
+
+`nanolyze` is a function that is able to quickly summarize data by groups.  The first argument is the number of variables to group by. The second argument name is the prefix that is added to the mean, sd and se summary, the default name is "Param".  The third argument is param_var which is the numeric variable that is to be summarized. The output of this function is a dataframe of the grouped variables, column N with number of values that were summarized, column mean for the mean, column sd for standard deviation, and column se for standard error of the mean. Here we see that the technical replicates will be averaged.
+```{r}
+Tech_avg_data <- tidy_data %>%
+  nanolyze(particle_size, Sample, Dilution,filter, injection, 
+           name = "Tech_rep",
+           param_var = True_count)
+
+Tech_avg_data
+```
+
+The technical average data can be visualized with ggpplot2.
+```{r}
+Tech_avg_data %>% 
+  ggplot(aes(x = particle_size, y = Tech_rep_mean, color = injection)) +
+  geom_line( size = 1) +
+  facet_wrap(~filter) + theme_bw()
+```
+
+In this experiment, a sample was read twice by the Nanosight and thus we can average the means by Injection to obtain a single mean value by using the `nanolyze` function again.  Notice the different use of the `name` and `param_var` arguments.
+```{r}
+Injection_avg_data <- Tech_avg_data %>% 
+  nanolyze(particle_size, Sample, Dilution, filter, 
+           name = "Injection",
+           param_var = Tech_rep_mean)
+
+Injection_avg_data
+```
+
+
+We can again use ggplot2 to visualize the mean injection data.
+```{r}
+Injection_avg_data %>% 
+  ggplot(aes(x = particle_size, y = Injection_mean, color = filter)) +
+  geom_line( size = 1) +
+  facet_wrap(~filter)
+```
+
+We can also use dplyr to filter on values less than 300nm easily.
+```{r, fig.cap = "MY FIGURE CAPTION"}
+Injection_avg_data %>% 
+  filter(particle_size <300) %>% 
+  ggplot(aes(x = particle_size, y = Injection_mean, color = filter)) +
+  geom_line( size = 1) +
+  facet_wrap(~filter) 
+```
+
+## nanocount
+`nanocount` is a function that is able to calculate the total sum of particles by group.
+```{r}
+Injection_avg_data %>%
+  nanocount(Sample, Dilution, filter, 
+            param_var = Injection_mean)
+```
+
+We can also use dplyr verbs before nanocount. To calculate the total number of particles less than 100nm the filter command can be used.
+```{r}
+Injection_avg_data %>%
+  filter(particle_size < 100) %>% 
+  nanocount(Sample, Dilution, filter, 
+            param_var = Injection_mean)
+```
+
