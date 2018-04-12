@@ -6,6 +6,7 @@
 #' @examples
 #' nanoimport("nanofile.csv")
 #' @keywords aggregate, summarize, summary statistics
+#' @import tidyverse
 #' @export
 
 nanoimport <- function(file) {

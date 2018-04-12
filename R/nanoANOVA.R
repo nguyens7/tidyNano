@@ -11,6 +11,7 @@
 #' nanoANOVA(starwars, species, param_var = mass)
 #' nanoANOVA(starwars, gender, param_var = height)
 #' @keywords statistics, ANOVA, nested
+#' @import tidyverse
 #' @export
 
 

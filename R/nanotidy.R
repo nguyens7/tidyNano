@@ -9,6 +9,7 @@
 #' @examples
 #' nanotidy(data, 2:12)
 #' @keywords aggregate, summarize, summary statistics
+#' @import tidyverse
 #' @export
 
 

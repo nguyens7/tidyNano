@@ -9,6 +9,7 @@
 #' nanoShapiro(starwars, species, param_var = mass)
 #' nanoShapiro(starwars, gender, param_var = height)
 #' @keywords statistics, parametric test, normality, nested
+#' @import tidyverse
 #' @export
 
 
