@@ -1,0 +1,51 @@
+---
+output: github_document
+---
+
+```{r, echo = FALSE, message = FALSE}
+knitr::opts_chunk$set(
+  fig.align = 'center',
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-")
+```
+
+# valr <img src="man/figures/tidyNano.png" align="right" />
+
+
+tidyNano is a package that imports raw NanoSight data and provides the framework to clean, analyze, and visualize nanoparticle analysis data.
+
+## Installation
+
+The latest development version can be installed from github:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("nguyens7/tidyNano")
+```
+
+## tidyNano Example
+
+```{r syntax_demo, message = FALSE}
+library(tidyNano)
+library(tidyverse)
+
+file <- system.file("extdata", "beads.csv", package = "tidyNano")
+
+tidy_data <- nanoimport(file) %>% 
+  nanotidy(2:13) %>% 
+  separate(Sample, into = c("Sample", "Dilution", "filter", "injection", "Tech_rep"),
+           sep = "_", convert = TRUE) %>% 
+  mutate_at(vars(Sample,filter:Tech_rep), as.factor) %>% 
+  mutate(True_count = Dilution * Count)
+
+tidy_data
+```
+
+```{r}
+tidy_data %>% 
+  ggplot(aes(x = particle_size, y = True_count, color = Tech_rep)) +
+  geom_line(size = 1) +
+  facet_wrap(injection~filter)
+```
+

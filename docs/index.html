@@ -21,7 +21,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-home">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -61,14 +61,63 @@
 
       
       </header><div class="row">
-  <div class="contents col-md-9">
-    A framework to clean, calculate summary statistics, 
-    and plot raw Nanosight data.  The package utilizes the principles of 
-    the tidyverse to properly format data in a 'tidy' format such that rows represent 
-    one observation and columns represent variables.
+  <div class="col-md-9 contents">
+    
+
+    
+    
+<div id="valr" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#valr" class="anchor"></a>valr <img src="../../../../Mobile%20Documents/com~apple~CloudDocs/R/tidyNano/man/figures/tidyNano.png" align="right">
+</h1></div>
+<p>tidyNano is a package that imports raw NanoSight data and provides the framework to clean, analyze, and visualize nanoparticle analysis data.</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>The latest development version can be installed from github:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
+devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"nguyens7/tidyNano"</span>)</code></pre></div>
+</div>
+<div id="tidynano-example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tidynano-example" class="anchor"></a>tidyNano Example</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyNano)
+<span class="kw">library</span>(tidyverse)
+
+file &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"beads.csv"</span>, <span class="dt">package =</span> <span class="st">"tidyNano"</span>)
+
+tidy_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/nanoimport.html">nanoimport</a></span>(file) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="reference/nanotidy.html">nanotidy</a></span>(<span class="dv">2</span><span class="op">:</span><span class="dv">13</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">separate</span>(Sample, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">"Sample"</span>, <span class="st">"Dilution"</span>, <span class="st">"filter"</span>, <span class="st">"injection"</span>, <span class="st">"Tech_rep"</span>),
+           <span class="dt">sep =</span> <span class="st">"_"</span>, <span class="dt">convert =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(Sample,filter<span class="op">:</span>Tech_rep), as.factor) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">True_count =</span> Dilution <span class="op">*</span><span class="st"> </span>Count)
+
+tidy_data
+<span class="co">#&gt; # A tibble: 12,000 x 8</span>
+<span class="co">#&gt;    particle_size Sample Dilution filter injection Tech_rep Count</span>
+<span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;  &lt;fct&gt;     &lt;fct&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1         0.500 std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;  2         1.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;  3         2.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;  4         3.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;  5         4.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;  6         5.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;  7         6.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;  8         7.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;  9         8.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt; 10         9.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt; # ... with 11,990 more rows, and 1 more variable: True_count &lt;dbl&gt;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> True_count, <span class="dt">color =</span> Tech_rep)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw">facet_wrap</span>(injection<span class="op">~</span>filter)</code></pre></div>
+<p><img src="../../../../Mobile%20Documents/com~apple~CloudDocs/R/tidyNano/man/figures/README-unnamed-chunk-2-1.png" width="700" style="display: block; margin: auto;"></p>
+</div>
+</div>
   </div>
 
-  <div class="col-md-3" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
@@ -89,7 +138,8 @@
 </ul>
 </div>
 
-  </div>
+      </div>
+
 </div>
 
 

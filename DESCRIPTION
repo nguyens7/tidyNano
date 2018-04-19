@@ -11,7 +11,7 @@ Description: A framework to clean, calculate summary statistics,
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Imports: tidyverse,lazyeval, readxl
+Imports: tidyverse, lazyeval
 RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown
