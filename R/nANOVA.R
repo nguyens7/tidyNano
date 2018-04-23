@@ -15,11 +15,9 @@
 #' @export
 
 
-nanoANOVA <- function(df, ..., name = "Param", value, variables) {
+nANOVA <- function(df, ..., name = "Param", value, variables) {
 
   group_var <- quos(...)
-  numeric <- enquo(value)
-  factor <- enquo(variables)
 
   anova <- function(df){
     numeric <- enquo(value)

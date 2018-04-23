@@ -4,6 +4,8 @@
 #' 'wide' to 'long'.
 #' @param df A dataframe.
 #' @param ... Specify the range of columns to tidy (x:z).
+#' @param col_names Numerical range of columns to tidy, specify "2:n" where n is the last column
+#' @param sep The variable to separate by, typically "_"
 #' @return Gathers values from 'wide' to 'long' format. Returns a dataframe with a
 #' Sample and Count column.
 #' @examples

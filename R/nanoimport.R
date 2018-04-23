@@ -1,7 +1,7 @@
 #' A Nanosight Data Import Function
 #'
 #' This function allows you aggregate or summarize your data by groups.
-#' @param csv A .csv file from a Malvern Nanosight machine.
+#' @param file A .csv file from a Malvern Nanosight machine.
 #' @return Dataframe of nanosight values.
 #' @examples
 #' nanoimport("nanofile.csv")
@@ -20,6 +20,8 @@ nanoimport <- function(file) {
                    header = F, nrows = 1000, stringsAsFactors = FALSE)
 
   colnames(df) <-  header
+
+  df <-  df[!is.na(names(df))] # Remove NA column
 
   df %>%
     rename(particle_size = Filename) %>%

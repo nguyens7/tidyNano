@@ -14,6 +14,8 @@ nanolyze(df, ..., name = "Param", param_var, na.rm = TRUE)
 \item{name}{Prefix name to summary statistics}
 
 \item{param_var}{The numerical value that you want to summarize.}
+
+\item{na.rm}{Argument for ignore 'NA' values}
 }
 \value{
 Summarized values \code{parm_var} grouped by \code{...}.

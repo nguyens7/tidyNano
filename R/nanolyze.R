@@ -5,6 +5,7 @@
 #' @param ... Columns to group by.
 #' @param name Prefix name to summary statistics
 #' @param param_var The numerical value that you want to summarize.
+#' @param na.rm Argument for ignore 'NA' values
 #' @return Summarized values \code{parm_var} grouped by \code{...}.
 #' Output of tidy dataframe of grouped by \code{...} variables, N, mean,
 #' standard deviation and standard error labeled according to 'name' argument.

@@ -14,6 +14,8 @@ nanocount(df, ..., name = "Particle", param_var, na.rm = TRUE)
 \item{name}{Prefix name to sum function.}
 
 \item{param_var}{The numerical value that you want to sum.}
+
+\item{na.rm}{Argument for ignore 'NA' values}
 }
 \value{
 Sum of particle count \code{parm_var} grouped by \code{...}.

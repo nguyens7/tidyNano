@@ -5,6 +5,7 @@
 #' @param ... Columns to group by.
 #' @param name Prefix name to sum function.
 #' @param param_var The numerical value that you want to sum.
+#' @param na.rm Argument for ignore 'NA' values
 #' @return Sum of particle count \code{parm_var} grouped by \code{...}.
 #' Output of tidy dataframe of sums grouped by \code{...} labeled according to 'name' argument.
 #' @examples

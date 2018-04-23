@@ -10,6 +10,10 @@ nanotidy(df, ..., col_names, sep = "_")
 \item{df}{A dataframe.}
 
 \item{...}{Specify the range of columns to tidy (x:z).}
+
+\item{col_names}{Numerical range of columns to tidy, specify "2:n" where n is the last column}
+
+\item{sep}{The variable to separate by, typically "_"}
 }
 \value{
 Gathers values from 'wide' to 'long' format. Returns a dataframe with a
