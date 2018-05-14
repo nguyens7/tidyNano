@@ -15,7 +15,7 @@
 
 nanoShapiro <- function(df, ..., value) {
 
-  group_var <- quos(...)
+  group_var <- rlang::quos(...)
   value <- enquo(value)
 
 

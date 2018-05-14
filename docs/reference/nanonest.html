@@ -122,7 +122,27 @@ perform statistical tests.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanonest</span>(<span class='no'>starwars</span>, <span class='no'>species</span>)</div><div class='output co'>#&gt; <span class='error'>Error in quos(...): could not find function "quos"</span></div><div class='input'><span class='fu'>nanonest</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>)</div><div class='output co'>#&gt; <span class='error'>Error in quos(...): could not find function "quos"</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanonest</span>(<span class='no'>starwars</span>, <span class='no'>species</span>)</div><div class='output co'>#&gt; # A tibble: 38 x 2
+#&gt;    species        data              
+#&gt;    &lt;chr&gt;          &lt;list&gt;            
+#&gt;  1 Human          &lt;tibble [35 × 12]&gt;
+#&gt;  2 Droid          &lt;tibble [5 × 12]&gt; 
+#&gt;  3 Wookiee        &lt;tibble [2 × 12]&gt; 
+#&gt;  4 Rodian         &lt;tibble [1 × 12]&gt; 
+#&gt;  5 Hutt           &lt;tibble [1 × 12]&gt; 
+#&gt;  6 Yoda's species &lt;tibble [1 × 12]&gt; 
+#&gt;  7 Trandoshan     &lt;tibble [1 × 12]&gt; 
+#&gt;  8 Mon Calamari   &lt;tibble [1 × 12]&gt; 
+#&gt;  9 Ewok           &lt;tibble [1 × 12]&gt; 
+#&gt; 10 Sullustan      &lt;tibble [1 × 12]&gt; 
+#&gt; # ... with 28 more rows</div><div class='input'><span class='fu'>nanonest</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 2
+#&gt;   gender        data              
+#&gt;   &lt;chr&gt;         &lt;list&gt;            
+#&gt; 1 male          &lt;tibble [62 × 12]&gt;
+#&gt; 2 &lt;NA&gt;          &lt;tibble [3 × 12]&gt; 
+#&gt; 3 female        &lt;tibble [19 × 12]&gt;
+#&gt; 4 hermaphrodite &lt;tibble [1 × 12]&gt; 
+#&gt; 5 none          &lt;tibble [2 × 12]&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

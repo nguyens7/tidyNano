@@ -4,16 +4,14 @@
 \alias{nanotidy}
 \title{A Tidy Function}
 \usage{
-nanotidy(df, ..., col_names, sep = "_")
+nanotidy(df, col, sep_var)
 }
 \arguments{
 \item{df}{A dataframe.}
 
-\item{...}{Specify the range of columns to tidy (x:z).}
+\item{col}{Specify the range of columns to tidy (x:z).}
 
-\item{col_names}{Numerical range of columns to tidy, specify "2:n" where n is the last column}
-
-\item{sep}{The variable to separate by, typically "_"}
+\item{sep_var}{Numerical range of columns to tidy, specify "2:n" where n is the last column}
 }
 \value{
 Gathers values from 'wide' to 'long' format. Returns a dataframe with a
@@ -24,9 +22,8 @@ This function allows you tidy Nanosight data.  It will make the data go from
 'wide' to 'long'.
 }
 \examples{
-nanotidy(data, 2:12)
+nanotidy(data, col = 2:12, sep_var = c("Sample","Dilution","Treatment","Condition"))
 }
 \keyword{aggregate,}
-\keyword{statistics}
-\keyword{summarize,}
-\keyword{summary}
+\keyword{clean,}
+\keyword{tidy}

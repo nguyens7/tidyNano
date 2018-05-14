@@ -5,11 +5,11 @@ output:
 ---
 
 ```{r, echo = FALSE, message = FALSE}
-knitr::opts_chunk$set(
-  fig.align = 'center',
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-")
+# knitr::opts_chunk$set(
+#   fig.align = 'center',
+#   collapse = TRUE,
+#   comment = "#>",
+#   fig.path = "man/figures/README-")
 ```
 
 # tidyNano <img src="man/figures/tidyNano.png" align="right" width = 150/>

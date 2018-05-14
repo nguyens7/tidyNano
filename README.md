@@ -30,21 +30,22 @@ tidy_data <- nanoimport(file) %>%
   mutate(True_count = Dilution * Count)
 
 tidy_data
-#> # A tibble: 12,000 x 8
-#>    particle_size Sample Dilution filter injection Tech_rep Count
-#>            <dbl> <fct>     <int> <fct>  <fct>     <fct>    <dbl>
-#>  1         0.500 std       10000 yes    2         0           0.
-#>  2         1.50  std       10000 yes    2         0           0.
-#>  3         2.50  std       10000 yes    2         0           0.
-#>  4         3.50  std       10000 yes    2         0           0.
-#>  5         4.50  std       10000 yes    2         0           0.
-#>  6         5.50  std       10000 yes    2         0           0.
-#>  7         6.50  std       10000 yes    2         0           0.
-#>  8         7.50  std       10000 yes    2         0           0.
-#>  9         8.50  std       10000 yes    2         0           0.
-#> 10         9.50  std       10000 yes    2         0           0.
-#> # ... with 11,990 more rows, and 1 more variable: True_count <dbl>
 ```
+
+    ## # A tibble: 12,000 x 8
+    ##    particle_size Sample Dilution filter injection Tech_rep Count
+    ##            <dbl> <fct>     <int> <fct>  <fct>     <fct>    <dbl>
+    ##  1         0.500 std       10000 yes    2         0           0.
+    ##  2         1.50  std       10000 yes    2         0           0.
+    ##  3         2.50  std       10000 yes    2         0           0.
+    ##  4         3.50  std       10000 yes    2         0           0.
+    ##  5         4.50  std       10000 yes    2         0           0.
+    ##  6         5.50  std       10000 yes    2         0           0.
+    ##  7         6.50  std       10000 yes    2         0           0.
+    ##  8         7.50  std       10000 yes    2         0           0.
+    ##  9         8.50  std       10000 yes    2         0           0.
+    ## 10         9.50  std       10000 yes    2         0           0.
+    ## # ... with 11,990 more rows, and 1 more variable: True_count <dbl>
 
 ``` r
 tidy_data %>% 
@@ -53,4 +54,4 @@ tidy_data %>%
   facet_wrap(injection~filter)
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)

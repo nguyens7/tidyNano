@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A nested Normality Test — nanoShapiro • tidyNano</title>
+<title>A nested ANOVA Function — nANOVA • tidyNano</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="A nested Normality Test — nanoShapiro" />
+<meta property="og:title" content="A nested ANOVA Function — nANOVA" />
 
 <meta property="og:description" content="This function allows you aggregate or summarize your data by groups." />
 <meta name="twitter:card" content="summary" />
@@ -91,16 +91,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A nested Normality Test</h1>
+    <h1>A nested ANOVA Function</h1>
     
-    <div class="hidden name"><code>nanoShapiro.Rd</code></div>
+    <div class="hidden name"><code>nANOVA.Rd</code></div>
     </div>
 
     
     <p>This function allows you aggregate or summarize your data by groups.</p>
     
 
-    <pre class="usage"><span class='fu'>nanoShapiro</span>(<span class='no'>df</span>, <span class='no'>...</span>, <span class='no'>value</span>)</pre>
+    <pre class="usage"><span class='fu'>nANOVA</span>(<span class='no'>df</span>, <span class='no'>...</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Param"</span>, <span class='no'>value</span>, <span class='no'>variables</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -117,15 +117,20 @@
       <th>value</th>
       <td><p>The numerical value that you want to summarize.</p></td>
     </tr>
+    <tr>
+      <th>variable</th>
+      <td><p>The variable you wish to compare between.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A nested data frame grouped by <code>...</code> and columns for Shapiro Test.</p>
+    <p>A nested data frame grouped by <code>...</code> and columns for Shapiro Test,
+ANOVA and Tukey HSD post hoc test.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanoShapiro</span>(<span class='no'>starwars</span>, <span class='no'>species</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>mass</span>)</div><div class='output co'>#&gt; <span class='error'>Error in mutate_impl(.data, dots): Evaluation error: Strings must match column names. Unknown columns: .</span></div><div class='input'><span class='fu'>nanoShapiro</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>height</span>)</div><div class='output co'>#&gt; <span class='error'>Error in mutate_impl(.data, dots): Evaluation error: Strings must match column names. Unknown columns: .</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanoANOVA</span>(<span class='no'>starwars</span>, <span class='no'>species</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>mass</span>)</div><div class='output co'>#&gt; <span class='error'>Error in nanoANOVA(starwars, species, param_var = mass): could not find function "nanoANOVA"</span></div><div class='input'><span class='fu'>nanoANOVA</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>height</span>)</div><div class='output co'>#&gt; <span class='error'>Error in nanoANOVA(starwars, gender, param_var = height): could not find function "nanoANOVA"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
