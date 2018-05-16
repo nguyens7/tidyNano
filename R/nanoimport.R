@@ -39,7 +39,9 @@ nanoimport <- function(file, bin_width = 1, NTA_version) {
   df <-  df[!is.na(names(df))] # Remove NA column
 
   df %>%
-    rename(particle_size = Filename) %>%
-    select(-Average, -`Standard Error`) %>%
-    as_tibble()
+    dplyr::rename(particle_size = Filename) %>%
+    dplyr::select(-Average, -`Standard Error`) %>%
+    dplyr::as_tibble()
 }
+
+

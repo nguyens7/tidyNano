@@ -17,14 +17,14 @@
 
 nanocount <- function(df, ..., name = "Particle", param_var, na.rm = TRUE) {
 
-  group_var <- quos(...)
-  param_var <- enquo(param_var)
+  group_var <- dplyr::quos(...)
+  param_var <- dplyr::enquo(param_var)
   N <- paste(name, "N" , sep = "_")
   total <- paste(name, "count" , sep = "_")
 
   df %>%
-    group_by(!!! group_var) %>%
-    summarise(!!N := length(na.omit(!!param_var)),
+    dplyr::group_by(!!! group_var) %>%
+    dplyr::summarise(!!N := length(na.omit(!!param_var)),
               !!total := sum(!!param_var, na.rm = na.rm))
 
 }

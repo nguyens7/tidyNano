@@ -16,19 +16,21 @@
 nanotidy <- function(df, col, sep_var){
 
   tidy_df <- df %>%
-    gather(Sample, Count, col) %>%
-    separate(Sample, into = sep_var, sep = "_", convert = TRUE) %>%
-    mutate_at(vars(Count),as.numeric)
+    tidyr::gather(Sample, Count, col) %>%
+    tidyr::separate(Sample, into = sep_var, sep = "_", convert = TRUE) %>%
+    dplyr::mutate_at(vars(Count),as.numeric)
 
   if("Dilution" %in% colnames(tidy_df)){
 
     fac_var <- sep_var[!sep_var %in% "Dilution"]
 
     tidy_df %>%
-      mutate_at(vars(fac_var),as.factor) %>%
-      mutate(Dilution =  as.numeric(Dilution),
+      dplyr::mutate_at(vars(fac_var),as.factor) %>%
+      dplyr::mutate(Dilution =  as.numeric(Dilution),
              True_count = Count * Dilution)
 
   } else{stop("Error: No \"Dilution\" column present.")
   }
 }
+
+

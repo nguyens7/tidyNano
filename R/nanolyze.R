@@ -20,16 +20,16 @@
 nanolyze <- function(df, ..., name = "Param", param_var, na.rm = TRUE) {
 
 
-  group_var <- quos(...)
-  param_var <- enquo(param_var)
+  group_var <- dplyr::quos(...)
+  param_var <- dplyr::enquo(param_var)
   N <- paste(name, "N" , sep = "_")
   mean <- paste(name, "mean" , sep = "_")
   sd <- paste(name, "sd" , sep = "_")
   se <- paste(name, "se" , sep = "_")
 
   df %>%
-    group_by(!!! group_var) %>%
-    summarise(   !! N := length(na.omit(!! param_var)),
+    dplyr::group_by(!!! group_var) %>%
+    dplyr::summarise(   !! N := length(na.omit(!! param_var)),
               !! mean := mean(!! param_var, na.rm = na.rm),
                 !! sd := sd(!! param_var, na.rm = na.rm),
                 !! se := sd(!! param_var, na.rm = na.rm) /

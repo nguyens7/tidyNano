@@ -12,24 +12,25 @@
 
 nanocombine <- function(dir = "", bin_width, NTA_version){
 
-  csv_files <- here(dir, list.files(here(dir), pattern = "*.csv"))
+  csv_files <- here::here(dir, list.files(here::here(dir), pattern = "*.csv"))
 
   message(paste("Reading in file",csv_files))
   message(paste("bin_width =",bin_width))
   message(paste("NTA_version =",NTA_version))
 
-  complete_df <- map(csv_files, ~nanoimport(file = .x,
+  complete_df <- purrr::map(csv_files, ~nanoimport(file = .x,
                                                    bin_width = bin_width,
                                                    NTA_version = NTA_version)) %>%
-    bind_cols()
+    dplyr::bind_cols()
 
   part_size_df <- complete_df[,1]
 
   sample_df <- complete_df %>%
-    select(-starts_with("particle_size"))
+    dplyr::select(-starts_with("particle_size"))
 
   final_df <- part_size_df %>%
-    bind_cols(sample_df)
+    dplyr::bind_cols(sample_df)
 
   final_df
 }
+

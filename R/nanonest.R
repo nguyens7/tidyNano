@@ -15,10 +15,12 @@
 
 nanonest <- function(df, ...) {
 
-  group_var <- quos(...)
+  group_var <- dplyr::quos(...)
 
   df %>%
-    group_by(!!! group_var) %>%
-    nest()
+    dplyr::group_by(!!! group_var) %>%
+    tidyr::nest()
 
 }
+
+
