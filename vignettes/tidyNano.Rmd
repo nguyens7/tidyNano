@@ -34,7 +34,7 @@ read.csv(file) %>% head()
 ```
 `nanoimport` is a function that extracts the particle data from raw a nanosight .csv file and creates a dataframe that is suitable for cleaning within R.
 ```{r}
-data <- nanoimport(file) 
+data <- nanoimport(file, NTA_version = 3.2) 
 
 data
 ```
@@ -42,7 +42,7 @@ data
 ## nanotidy
 `nanotidy` is a function that facilitates the conversion of a dataframe to make it tidy for easy data visualization with ggplot2 and data manipulation with dplyr.
 ```{r}
-tidy_data <- nanoimport(file) %>% 
+tidy_data <- nanoimport(file, NTA_version = 3.2) %>% 
   nanotidy(col = 2:13, 
            sep_var = c("Sample", "Dilution","Filter",
                        "Injection","Tech_rep")) 

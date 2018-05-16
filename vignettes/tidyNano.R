@@ -14,12 +14,12 @@ file <- system.file("extdata", "beads.csv", package = "tidyNano")
 read.csv(file) %>% head()
 
 ## ------------------------------------------------------------------------
-data <- nanoimport(file) 
+data <- nanoimport(file, NTA_version = 3.2) 
 
 data
 
 ## ------------------------------------------------------------------------
-tidy_data <- nanoimport(file) %>% 
+tidy_data <- nanoimport(file, NTA_version = 3.2) %>% 
   nanotidy(col = 2:13, 
            sep_var = c("Sample", "Dilution","Filter",
                        "Injection","Tech_rep")) 
