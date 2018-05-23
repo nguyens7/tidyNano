@@ -34,12 +34,14 @@ library(tidyverse)
 
 file <- system.file("extdata", "beads.csv", package = "tidyNano")
 
-tidy_data <- nanoimport(file) %>% 
-  nanotidy(2:13) %>% 
-  separate(Sample, into = c("Sample", "Dilution", "filter", "injection", "Tech_rep"),
-           sep = "_", convert = TRUE) %>% 
-  mutate_at(vars(Sample,filter:Tech_rep), as.factor) %>% 
-  mutate(True_count = Dilution * Count)
+data <- nanoimport(file, NTA_version = 3.2)  
+
+data
+```
+```{r}
+tidy_data <- data  %>% 
+  nanotidy(col = 2:13, 
+           sep_var = c("Sample", "Dilution","Filter","Injection","Tech_rep"))
 
 tidy_data
 ```
@@ -48,6 +50,6 @@ tidy_data
 tidy_data %>% 
   ggplot(aes(x = particle_size, y = True_count, color = Tech_rep)) +
   geom_line(size = 1) +
-  facet_wrap(injection~filter)
+  facet_wrap(Injection ~ Filter)
 ```
 

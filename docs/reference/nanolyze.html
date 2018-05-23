@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="A Summarization Function — nanolyze" />
 
 <meta property="og:description" content="This function allows you aggregate or summarize your data by groups." />
@@ -38,8 +41,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -96,9 +97,11 @@
     <div class="hidden name"><code>nanolyze.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function allows you aggregate or summarize your data by groups.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>nanolyze</span>(<span class='no'>df</span>, <span class='no'>...</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Param"</span>, <span class='no'>param_var</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
@@ -138,24 +141,24 @@ standard deviation and standard error labeled according to 'name' argument.</p>
     <pre class="examples"><div class='input'><span class='fu'>nanolyze</span>(<span class='no'>starwars</span>, <span class='no'>species</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"mass"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>mass</span>)</div><div class='output co'>#&gt; # A tibble: 38 x 5
 #&gt;    species   mass_N mass_mean mass_sd mass_se
 #&gt;    &lt;chr&gt;      &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1 Aleena         1      15.0    NA     NA   
-#&gt;  2 Besalisk       1     102.     NA     NA   
-#&gt;  3 Cerean         1      82.0    NA     NA   
-#&gt;  4 Chagrian       0     NaN      NA     NA   
-#&gt;  5 Clawdite       1      55.0    NA     NA   
-#&gt;  6 Droid          4      69.8    51.0   25.5 
-#&gt;  7 Dug            1      40.0    NA     NA   
-#&gt;  8 Ewok           1      20.0    NA     NA   
-#&gt;  9 Geonosian      1      80.0    NA     NA   
-#&gt; 10 Gungan         2      74.0    11.3    8.00
+#&gt;  1 Aleena         1      15      NA      NA  
+#&gt;  2 Besalisk       1     102      NA      NA  
+#&gt;  3 Cerean         1      82      NA      NA  
+#&gt;  4 Chagrian       0     NaN      NA      NA  
+#&gt;  5 Clawdite       1      55      NA      NA  
+#&gt;  6 Droid          4      69.8    51.0    25.5
+#&gt;  7 Dug            1      40      NA      NA  
+#&gt;  8 Ewok           1      20      NA      NA  
+#&gt;  9 Geonosian      1      80      NA      NA  
+#&gt; 10 Gungan         2      74      11.3     8  
 #&gt; # ... with 28 more rows</div><div class='input'><span class='fu'>nanolyze</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"height"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>height</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 5
 #&gt;   gender        height_N height_mean height_sd height_se
 #&gt;   &lt;chr&gt;            &lt;int&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
 #&gt; 1 female              17        165.      23.0      5.59
-#&gt; 2 hermaphrodite        1        175.      NA       NA   
+#&gt; 2 hermaphrodite        1        175       NA       NA   
 #&gt; 3 male                59        179.      35.4      4.61
-#&gt; 4 none                 1        200.      NA       NA   
-#&gt; 5 &lt;NA&gt;                 3        120.      40.7     23.5 </div></pre>
+#&gt; 4 none                 1        200       NA       NA   
+#&gt; 5 &lt;NA&gt;                 3        120       40.7     23.5 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

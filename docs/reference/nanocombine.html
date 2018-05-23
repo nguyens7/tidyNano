@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Function for Nesting Data — nanonest • tidyNano</title>
+<title>A Nanosight  Import Function — nanocombine • tidyNano</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="A Function for Nesting Data — nanonest" />
+<meta property="og:title" content="A Nanosight  Import Function — nanocombine" />
 
-<meta property="og:description" content="This function allows you aggregate or summarize your data by groups." />
+<meta property="og:description" content="This function allows you import and combine multiple data files into one data frame." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,60 +92,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A Function for Nesting Data</h1>
+    <h1>A Nanosight  Import Function</h1>
     
-    <div class="hidden name"><code>nanonest.Rd</code></div>
+    <div class="hidden name"><code>nanocombine.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function allows you aggregate or summarize your data by groups.</p>
+    <p>This function allows you import and combine multiple data files into one data frame.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nanonest</span>(<span class='no'>df</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>nanocombine</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='no'>bin_width</span>, <span class='no'>NTA_version</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>A dataframe.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Columns to group by.</p></td>
+      <th>dir</th>
+      <td><p>The directory where files are located, defaults to global working directory</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A nested data frame grouped by <code>...</code> , suitable for using mutate and map to
-perform statistical tests.</p>
+    <p>Dataframe of nanosight values.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanonest</span>(<span class='no'>starwars</span>, <span class='no'>species</span>)</div><div class='output co'>#&gt; # A tibble: 38 x 2
-#&gt;    species        data              
-#&gt;    &lt;chr&gt;          &lt;list&gt;            
-#&gt;  1 Human          &lt;tibble [35 × 12]&gt;
-#&gt;  2 Droid          &lt;tibble [5 × 12]&gt; 
-#&gt;  3 Wookiee        &lt;tibble [2 × 12]&gt; 
-#&gt;  4 Rodian         &lt;tibble [1 × 12]&gt; 
-#&gt;  5 Hutt           &lt;tibble [1 × 12]&gt; 
-#&gt;  6 Yoda's species &lt;tibble [1 × 12]&gt; 
-#&gt;  7 Trandoshan     &lt;tibble [1 × 12]&gt; 
-#&gt;  8 Mon Calamari   &lt;tibble [1 × 12]&gt; 
-#&gt;  9 Ewok           &lt;tibble [1 × 12]&gt; 
-#&gt; 10 Sullustan      &lt;tibble [1 × 12]&gt; 
-#&gt; # ... with 28 more rows</div><div class='input'><span class='fu'>nanonest</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 2
-#&gt;   gender        data              
-#&gt;   &lt;chr&gt;         &lt;list&gt;            
-#&gt; 1 male          &lt;tibble [62 × 12]&gt;
-#&gt; 2 &lt;NA&gt;          &lt;tibble [3 × 12]&gt; 
-#&gt; 3 female        &lt;tibble [19 × 12]&gt;
-#&gt; 4 hermaphrodite &lt;tibble [1 × 12]&gt; 
-#&gt; 5 none          &lt;tibble [2 × 12]&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='nanoimport.html'>nanoimport</a></span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"nanofile.csv"</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>NTA_version</span> <span class='kw'>=</span> <span class='fl'>3.2</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open file 'nanofile.csv': No such file or directory</span></div><div class='output co'>#&gt; <span class='error'>Error in file(file, "rt"): cannot open the connection</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

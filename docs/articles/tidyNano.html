@@ -63,7 +63,7 @@
       <h1>tidyNano Vignette</h1>
                         <h4 class="author">Sean Nguyen</h4>
             
-            <h4 class="date">2018-04-23</h4>
+            <h4 class="date">2018-05-23</h4>
       
       
       <div class="hidden name"><code>tidyNano.Rmd</code></div>
@@ -100,22 +100,22 @@
 <span class="co">#&gt; 5                                        </span>
 <span class="co">#&gt; 6</span></code></pre></div>
 <p><code>nanoimport</code> is a function that extracts the particle data from raw a nanosight .csv file and creates a dataframe that is suitable for cleaning within R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nanoimport.html">nanoimport</a></span>(file) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nanoimport.html">nanoimport</a></span>(file, <span class="dt">NTA_version =</span> <span class="fl">3.2</span>) 
 
 data
 <span class="co">#&gt; # A tibble: 1,000 x 13</span>
 <span class="co">#&gt;    particle_size std_10000_yes_2_00 std_10000_yes_2_01 std_10000_yes_2_02</span>
 <span class="co">#&gt;            &lt;dbl&gt;              &lt;int&gt;              &lt;int&gt;              &lt;int&gt;</span>
-<span class="co">#&gt;  1         0.500                  0                  0                  0</span>
-<span class="co">#&gt;  2         1.50                   0                  0                  0</span>
-<span class="co">#&gt;  3         2.50                   0                  0                  0</span>
-<span class="co">#&gt;  4         3.50                   0                  0                  0</span>
-<span class="co">#&gt;  5         4.50                   0                  0                  0</span>
-<span class="co">#&gt;  6         5.50                   0                  0                  0</span>
-<span class="co">#&gt;  7         6.50                   0                  0                  0</span>
-<span class="co">#&gt;  8         7.50                   0                  0                  0</span>
-<span class="co">#&gt;  9         8.50                   0                  0                  0</span>
-<span class="co">#&gt; 10         9.50                   0                  0                  0</span>
+<span class="co">#&gt;  1           0.5                  0                  0                  0</span>
+<span class="co">#&gt;  2           1.5                  0                  0                  0</span>
+<span class="co">#&gt;  3           2.5                  0                  0                  0</span>
+<span class="co">#&gt;  4           3.5                  0                  0                  0</span>
+<span class="co">#&gt;  5           4.5                  0                  0                  0</span>
+<span class="co">#&gt;  6           5.5                  0                  0                  0</span>
+<span class="co">#&gt;  7           6.5                  0                  0                  0</span>
+<span class="co">#&gt;  8           7.5                  0                  0                  0</span>
+<span class="co">#&gt;  9           8.5                  0                  0                  0</span>
+<span class="co">#&gt; 10           9.5                  0                  0                  0</span>
 <span class="co">#&gt; # ... with 990 more rows, and 9 more variables: std_10000_no_2_00 &lt;int&gt;,</span>
 <span class="co">#&gt; #   std_10000_no_2_01 &lt;int&gt;, std_10000_no_2_02 &lt;int&gt;,</span>
 <span class="co">#&gt; #   std_10000_yes_1_00 &lt;int&gt;, std_10000_yes_1_01 &lt;int&gt;,</span>
@@ -126,125 +126,102 @@ data
 <h2 class="hasAnchor">
 <a href="#nanotidy" class="anchor"></a>nanotidy</h2>
 <p><code>nanotidy</code> is a function that facilitates the conversion of a dataframe to make it tidy for easy data visualization with ggplot2 and data manipulation with dplyr.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/nanoimport.html">nanoimport</a></span>(file) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/nanotidy.html">nanotidy</a></span>(<span class="dv">2</span><span class="op">:</span><span class="dv">13</span>) 
-<span class="co">#&gt; # A tibble: 12,000 x 3</span>
-<span class="co">#&gt;    particle_size Sample             Count</span>
-<span class="co">#&gt;            &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;</span>
-<span class="co">#&gt;  1         0.500 std_10000_yes_2_00    0.</span>
-<span class="co">#&gt;  2         1.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt;  3         2.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt;  4         3.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt;  5         4.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt;  6         5.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt;  7         6.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt;  8         7.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt;  9         8.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt; 10         9.50  std_10000_yes_2_00    0.</span>
-<span class="co">#&gt; # ... with 11,990 more rows</span></code></pre></div>
-</div>
-<div id="data-tidying" class="section level2">
-<h2 class="hasAnchor">
-<a href="#data-tidying" class="anchor"></a>data tidying</h2>
-<p>We can use the existing tools in the tidyr and dplyr package to futher format the data so it is truly in the tidy format.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nanoimport.html">nanoimport</a></span>(file) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/nanotidy.html">nanotidy</a></span>(<span class="dv">2</span><span class="op">:</span><span class="dv">13</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">separate</span>(Sample, <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">"Sample"</span>, <span class="st">"Dilution"</span>, <span class="st">"filter"</span>, <span class="st">"injection"</span>, <span class="st">"Tech_rep"</span>),
-           <span class="dt">sep =</span> <span class="st">"_"</span>, <span class="dt">convert =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(Sample,filter<span class="op">:</span>Tech_rep), as.factor) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">True_count =</span> Dilution <span class="op">*</span><span class="st"> </span>Count)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data &lt;-<span class="st"> </span><span class="kw"><a href="../reference/nanoimport.html">nanoimport</a></span>(file, <span class="dt">NTA_version =</span> <span class="fl">3.2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="../reference/nanotidy.html">nanotidy</a></span>(<span class="dt">col =</span> <span class="dv">2</span><span class="op">:</span><span class="dv">13</span>, 
+           <span class="dt">sep_var =</span> <span class="kw">c</span>(<span class="st">"Sample"</span>, <span class="st">"Dilution"</span>,<span class="st">"Filter"</span>,
+                       <span class="st">"Injection"</span>,<span class="st">"Tech_rep"</span>)) 
 
 tidy_data
 <span class="co">#&gt; # A tibble: 12,000 x 8</span>
-<span class="co">#&gt;    particle_size Sample Dilution filter injection Tech_rep Count</span>
-<span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;  &lt;fct&gt;     &lt;fct&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1         0.500 std       10000 yes    2         0           0.</span>
-<span class="co">#&gt;  2         1.50  std       10000 yes    2         0           0.</span>
-<span class="co">#&gt;  3         2.50  std       10000 yes    2         0           0.</span>
-<span class="co">#&gt;  4         3.50  std       10000 yes    2         0           0.</span>
-<span class="co">#&gt;  5         4.50  std       10000 yes    2         0           0.</span>
-<span class="co">#&gt;  6         5.50  std       10000 yes    2         0           0.</span>
-<span class="co">#&gt;  7         6.50  std       10000 yes    2         0           0.</span>
-<span class="co">#&gt;  8         7.50  std       10000 yes    2         0           0.</span>
-<span class="co">#&gt;  9         8.50  std       10000 yes    2         0           0.</span>
-<span class="co">#&gt; 10         9.50  std       10000 yes    2         0           0.</span>
+<span class="co">#&gt;    particle_size Sample Dilution Filter Injection Tech_rep Count</span>
+<span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;     &lt;fct&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1           0.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt;  2           1.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt;  3           2.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt;  4           3.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt;  5           4.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt;  6           5.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt;  7           6.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt;  8           7.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt;  9           8.5 std       10000 yes    2         0            0</span>
+<span class="co">#&gt; 10           9.5 std       10000 yes    2         0            0</span>
 <span class="co">#&gt; # ... with 11,990 more rows, and 1 more variable: True_count &lt;dbl&gt;</span></code></pre></div>
 <p>Once the data is in the tidy format it can be easily visualized using existing libraries such as ggplot2.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> True_count, <span class="dt">color =</span> Tech_rep)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(injection<span class="op">~</span>filter)</code></pre></div>
-<p><img src="tidyNano_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<span class="st">  </span><span class="kw">facet_wrap</span>(Injection <span class="op">~</span><span class="st"> </span>Filter)</code></pre></div>
+<p><img src="tidyNano_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
 <div id="nanolyze" class="section level2">
 <h2 class="hasAnchor">
 <a href="#nanolyze" class="anchor"></a>nanolyze</h2>
 <p><code>nanolyze</code> is a function that is able to quickly summarize data by groups. The first argument is the number of variables to group by. The second argument name is the prefix that is added to the mean, sd and se summary, the default name is “Param”. The third argument is param_var which is the numeric variable that is to be summarized. The output of this function is a dataframe of the grouped variables, column N with number of values that were summarized, column mean for the mean, column sd for standard deviation, and column se for standard error of the mean. Here we see that the technical replicates will be averaged.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tech_avg_data &lt;-<span class="st"> </span>tidy_data <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/nanolyze.html">nanolyze</a></span>(particle_size, Sample, Dilution,filter, injection, 
+<span class="st">  </span><span class="kw"><a href="../reference/nanolyze.html">nanolyze</a></span>(particle_size, Sample, Dilution, Filter, Injection, 
            <span class="dt">name =</span> <span class="st">"Tech_rep"</span>,
            <span class="dt">param_var =</span> True_count)
 
 Tech_avg_data
 <span class="co">#&gt; # A tibble: 4,000 x 9</span>
-<span class="co">#&gt; # Groups:   particle_size, Sample, Dilution, filter [?]</span>
-<span class="co">#&gt;    particle_size Sample Dilution filter injection Tech_rep_N Tech_rep_mean</span>
-<span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;  &lt;fct&gt;          &lt;int&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt;  1         0.500 std       10000 no     1                  3            0.</span>
-<span class="co">#&gt;  2         0.500 std       10000 no     2                  3            0.</span>
-<span class="co">#&gt;  3         0.500 std       10000 yes    1                  3            0.</span>
-<span class="co">#&gt;  4         0.500 std       10000 yes    2                  3            0.</span>
-<span class="co">#&gt;  5         1.50  std       10000 no     1                  3            0.</span>
-<span class="co">#&gt;  6         1.50  std       10000 no     2                  3            0.</span>
-<span class="co">#&gt;  7         1.50  std       10000 yes    1                  3            0.</span>
-<span class="co">#&gt;  8         1.50  std       10000 yes    2                  3            0.</span>
-<span class="co">#&gt;  9         2.50  std       10000 no     1                  3            0.</span>
-<span class="co">#&gt; 10         2.50  std       10000 no     2                  3            0.</span>
+<span class="co">#&gt; # Groups:   particle_size, Sample, Dilution, Filter [?]</span>
+<span class="co">#&gt;    particle_size Sample Dilution Filter Injection Tech_rep_N Tech_rep_mean</span>
+<span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;          &lt;int&gt;         &lt;dbl&gt;</span>
+<span class="co">#&gt;  1           0.5 std       10000 no     1                  3             0</span>
+<span class="co">#&gt;  2           0.5 std       10000 no     2                  3             0</span>
+<span class="co">#&gt;  3           0.5 std       10000 yes    1                  3             0</span>
+<span class="co">#&gt;  4           0.5 std       10000 yes    2                  3             0</span>
+<span class="co">#&gt;  5           1.5 std       10000 no     1                  3             0</span>
+<span class="co">#&gt;  6           1.5 std       10000 no     2                  3             0</span>
+<span class="co">#&gt;  7           1.5 std       10000 yes    1                  3             0</span>
+<span class="co">#&gt;  8           1.5 std       10000 yes    2                  3             0</span>
+<span class="co">#&gt;  9           2.5 std       10000 no     1                  3             0</span>
+<span class="co">#&gt; 10           2.5 std       10000 no     2                  3             0</span>
 <span class="co">#&gt; # ... with 3,990 more rows, and 2 more variables: Tech_rep_sd &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   Tech_rep_se &lt;dbl&gt;</span></code></pre></div>
 <p>The technical average data can be visualized with ggpplot2.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tech_avg_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Tech_rep_mean, <span class="dt">color =</span> injection)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Tech_rep_mean, <span class="dt">color =</span> Injection)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>filter) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</code></pre></div>
-<p><img src="tidyNano_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Filter) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</code></pre></div>
+<p><img src="tidyNano_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <p>In this experiment, a sample was read twice by the Nanosight and thus we can average the means by Injection to obtain a single mean value by using the <code>nanolyze</code> function again. Notice the different use of the <code>name</code> and <code>param_var</code> arguments.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data &lt;-<span class="st"> </span>Tech_avg_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/nanolyze.html">nanolyze</a></span>(particle_size, Sample, Dilution, filter, 
+<span class="st">  </span><span class="kw"><a href="../reference/nanolyze.html">nanolyze</a></span>(particle_size, Sample, Dilution, Filter, 
            <span class="dt">name =</span> <span class="st">"Injection"</span>,
            <span class="dt">param_var =</span> Tech_rep_mean)
 
 Injection_avg_data
 <span class="co">#&gt; # A tibble: 2,000 x 8</span>
 <span class="co">#&gt; # Groups:   particle_size, Sample, Dilution [?]</span>
-<span class="co">#&gt;    particle_size Sample Dilution filter Injection_N Injection_mean</span>
-<span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;        &lt;int&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt;  1         0.500 std       10000 no               2             0.</span>
-<span class="co">#&gt;  2         0.500 std       10000 yes              2             0.</span>
-<span class="co">#&gt;  3         1.50  std       10000 no               2             0.</span>
-<span class="co">#&gt;  4         1.50  std       10000 yes              2             0.</span>
-<span class="co">#&gt;  5         2.50  std       10000 no               2             0.</span>
-<span class="co">#&gt;  6         2.50  std       10000 yes              2             0.</span>
-<span class="co">#&gt;  7         3.50  std       10000 no               2             0.</span>
-<span class="co">#&gt;  8         3.50  std       10000 yes              2             0.</span>
-<span class="co">#&gt;  9         4.50  std       10000 no               2             0.</span>
-<span class="co">#&gt; 10         4.50  std       10000 yes              2             0.</span>
+<span class="co">#&gt;    particle_size Sample Dilution Filter Injection_N Injection_mean</span>
+<span class="co">#&gt;            &lt;dbl&gt; &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;        &lt;int&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt;  1           0.5 std       10000 no               2              0</span>
+<span class="co">#&gt;  2           0.5 std       10000 yes              2              0</span>
+<span class="co">#&gt;  3           1.5 std       10000 no               2              0</span>
+<span class="co">#&gt;  4           1.5 std       10000 yes              2              0</span>
+<span class="co">#&gt;  5           2.5 std       10000 no               2              0</span>
+<span class="co">#&gt;  6           2.5 std       10000 yes              2              0</span>
+<span class="co">#&gt;  7           3.5 std       10000 no               2              0</span>
+<span class="co">#&gt;  8           3.5 std       10000 yes              2              0</span>
+<span class="co">#&gt;  9           4.5 std       10000 no               2              0</span>
+<span class="co">#&gt; 10           4.5 std       10000 yes              2              0</span>
 <span class="co">#&gt; # ... with 1,990 more rows, and 2 more variables: Injection_sd &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   Injection_se &lt;dbl&gt;</span></code></pre></div>
 <p>We can again use ggplot2 to visualize the mean injection data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Injection_mean, <span class="dt">color =</span> filter)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Injection_mean, <span class="dt">color =</span> Filter)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>filter)</code></pre></div>
-<p><img src="tidyNano_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Filter)</code></pre></div>
+<p><img src="tidyNano_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 <p>We can also use dplyr to filter on values less than 300nm easily.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">filter</span>(particle_size <span class="op">&lt;</span><span class="dv">300</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Injection_mean, <span class="dt">color =</span> filter)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Injection_mean, <span class="dt">color =</span> Filter)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>filter) </code></pre></div>
+<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Filter) </code></pre></div>
 <div class="figure">
-<img src="tidyNano_files/figure-html/unnamed-chunk-11-1.png" alt="MY FIGURE CAPTION" width="700"><p class="caption">
+<img src="tidyNano_files/figure-html/unnamed-chunk-10-1.png" alt="MY FIGURE CAPTION" width="700"><p class="caption">
 MY FIGURE CAPTION
 </p>
 </div>
@@ -254,23 +231,23 @@ MY FIGURE CAPTION
 <a href="#nanocount" class="anchor"></a>nanocount</h2>
 <p><code>nanocount</code> is a function that is able to calculate the total sum of particles by group.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/nanocount.html">nanocount</a></span>(Sample, Dilution, filter, 
+<span class="st">  </span><span class="kw"><a href="../reference/nanocount.html">nanocount</a></span>(Sample, Dilution, Filter, 
             <span class="dt">param_var =</span> Injection_mean)
 <span class="co">#&gt; # A tibble: 2 x 5</span>
 <span class="co">#&gt; # Groups:   Sample, Dilution [?]</span>
-<span class="co">#&gt;   Sample Dilution filter Particle_N Particle_count</span>
-<span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;       &lt;int&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt;   Sample Dilution Filter Particle_N Particle_count</span>
+<span class="co">#&gt;   &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;       &lt;int&gt;          &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 std       10000 no           1000        1.64e13</span>
 <span class="co">#&gt; 2 std       10000 yes          1000        1.29e13</span></code></pre></div>
 <p>We can also use dplyr verbs before nanocount. To calculate the total number of particles less than 100nm the filter command can be used.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">filter</span>(particle_size <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="../reference/nanocount.html">nanocount</a></span>(Sample, Dilution, filter, 
+<span class="st">  </span><span class="kw"><a href="../reference/nanocount.html">nanocount</a></span>(Sample, Dilution, Filter, 
             <span class="dt">param_var =</span> Injection_mean)
 <span class="co">#&gt; # A tibble: 2 x 5</span>
 <span class="co">#&gt; # Groups:   Sample, Dilution [?]</span>
-<span class="co">#&gt;   Sample Dilution filter Particle_N Particle_count</span>
-<span class="co">#&gt;   &lt;fct&gt;     &lt;int&gt; &lt;fct&gt;       &lt;int&gt;          &lt;dbl&gt;</span>
+<span class="co">#&gt;   Sample Dilution Filter Particle_N Particle_count</span>
+<span class="co">#&gt;   &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;       &lt;int&gt;          &lt;dbl&gt;</span>
 <span class="co">#&gt; 1 std       10000 no            100        1.02e13</span>
 <span class="co">#&gt; 2 std       10000 yes           100        7.55e12</span></code></pre></div>
 </div>
@@ -286,7 +263,6 @@ MY FIGURE CAPTION
 <a href="#tidynano-vignette">tidyNano Vignette</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#nanoimport">nanoimport</a></li>
       <li><a href="#nanotidy">nanotidy</a></li>
-      <li><a href="#data-tidying">data tidying</a></li>
       <li><a href="#nanolyze">nanolyze</a></li>
       <li><a href="#nanocount">nanocount</a></li>
       </ul>

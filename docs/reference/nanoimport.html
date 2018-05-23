@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="A Nanosight Data Import Function — nanoimport" />
 
 <meta property="og:description" content="This function allows you aggregate or summarize your data by groups." />
@@ -38,8 +41,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -96,11 +97,13 @@
     <div class="hidden name"><code>nanoimport.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>This function allows you aggregate or summarize your data by groups.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>nanoimport</span>(<span class='no'>file</span>)</pre>
+    <pre class="usage"><span class='fu'>nanoimport</span>(<span class='no'>file</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='no'>NTA_version</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -117,7 +120,7 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanoimport</span>(<span class='st'>"nanofile.csv"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open file 'nanofile.csv': No such file or directory</span></div><div class='output co'>#&gt; <span class='error'>Error in file(file, "rt"): cannot open the connection</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanoimport</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"nanofile.csv"</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>NTA_version</span> <span class='kw'>=</span> <span class='fl'>3.2</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open file 'nanofile.csv': No such file or directory</span></div><div class='output co'>#&gt; <span class='error'>Error in file(file, "rt"): cannot open the connection</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
