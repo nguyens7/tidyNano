@@ -4,7 +4,7 @@
 \alias{nanocombine}
 \title{A Nanosight  Import Function}
 \usage{
-nanocombine(dir = "", bin_width, NTA_version)
+nanocombine(dir = "", bin_width = 1, range = 1000, NTA_version)
 }
 \arguments{
 \item{dir}{The directory where files are located, defaults to global working directory}
@@ -16,7 +16,7 @@ Dataframe of nanosight values.
 This function allows you import and combine multiple data files into one data frame.
 }
 \examples{
-nanoimport(file = "nanofile.csv", bin_width = 1, NTA_version = 3.2)
+nanocombine(dir = "file_folder", bin_width = 1, range = 1000, NTA_version = 3.2)
 }
 \keyword{extract}
 \keyword{import,}

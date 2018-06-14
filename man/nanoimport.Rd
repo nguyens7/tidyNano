@@ -4,7 +4,7 @@
 \alias{nanoimport}
 \title{A Nanosight Data Import Function}
 \usage{
-nanoimport(file, bin_width = 1, NTA_version)
+nanoimport(file, bin_width = 1, range = 1000, NTA_version)
 }
 \arguments{
 \item{file}{A .csv file from a Malvern Nanosight machine.}
@@ -16,7 +16,7 @@ Dataframe of nanosight values.
 This function allows you aggregate or summarize your data by groups.
 }
 \examples{
-nanoimport(file = "nanofile.csv", bin_width = 1, NTA_version = 3.2)
+nanoimport(file = "nanofile.csv", bin_width = 1,, range = 1000, NTA_version = 3.2)
 }
 \keyword{extract}
 \keyword{import,}
