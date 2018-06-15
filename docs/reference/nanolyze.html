@@ -138,27 +138,7 @@ standard deviation and standard error labeled according to 'name' argument.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanolyze</span>(<span class='no'>starwars</span>, <span class='no'>species</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"mass"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>mass</span>)</div><div class='output co'>#&gt; # A tibble: 38 x 5
-#&gt;    species   mass_N mass_mean mass_sd mass_se
-#&gt;    &lt;chr&gt;      &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1 Aleena         1      15      NA      NA  
-#&gt;  2 Besalisk       1     102      NA      NA  
-#&gt;  3 Cerean         1      82      NA      NA  
-#&gt;  4 Chagrian       0     NaN      NA      NA  
-#&gt;  5 Clawdite       1      55      NA      NA  
-#&gt;  6 Droid          4      69.8    51.0    25.5
-#&gt;  7 Dug            1      40      NA      NA  
-#&gt;  8 Ewok           1      20      NA      NA  
-#&gt;  9 Geonosian      1      80      NA      NA  
-#&gt; 10 Gungan         2      74      11.3     8  
-#&gt; # ... with 28 more rows</div><div class='input'><span class='fu'>nanolyze</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"height"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>height</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 5
-#&gt;   gender        height_N height_mean height_sd height_se
-#&gt;   &lt;chr&gt;            &lt;int&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1 female              17        165.      23.0      5.59
-#&gt; 2 hermaphrodite        1        175       NA       NA   
-#&gt; 3 male                59        179.      35.4      4.61
-#&gt; 4 none                 1        200       NA       NA   
-#&gt; 5 &lt;NA&gt;                 3        120       40.7     23.5 </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanolyze</span>(<span class='no'>starwars</span>, <span class='no'>species</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"mass"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>mass</span>)</div><div class='output co'>#&gt; <span class='error'>Error in df %&gt;% dplyr::group_by(!!!group_var) %&gt;% dplyr::summarise(`:=`(!!N,     length(na.omit(!!param_var))), `:=`(!!mean, mean(!!param_var,     na.rm = na.rm)), `:=`(!!sd, sd(!!param_var, na.rm = na.rm)),     `:=`(!!se, sd(!!param_var, na.rm = na.rm)/sqrt(length(na.omit(!!param_var))))): could not find function "%&gt;%"</span></div><div class='input'><span class='fu'>nanolyze</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"height"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>height</span>)</div><div class='output co'>#&gt; <span class='error'>Error in df %&gt;% dplyr::group_by(!!!group_var) %&gt;% dplyr::summarise(`:=`(!!N,     length(na.omit(!!param_var))), `:=`(!!mean, mean(!!param_var,     na.rm = na.rm)), `:=`(!!sd, sd(!!param_var, na.rm = na.rm)),     `:=`(!!se, sd(!!param_var, na.rm = na.rm)/sqrt(length(na.omit(!!param_var))))): could not find function "%&gt;%"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

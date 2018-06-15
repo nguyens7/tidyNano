@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Nanosight  Import Function — nanocombine • tidyNano</title>
+<title>A Function to Edit Column Headers — find_replace • tidyNano</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="A Nanosight  Import Function — nanocombine" />
+<meta property="og:title" content="A Function to Edit Column Headers — find_replace" />
 
-<meta property="og:description" content="This function allows you import and combine multiple data files into one data frame." />
+<meta property="og:description" content="This function allows for finding and replacing patterns in column names." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -92,43 +92,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A Nanosight  Import Function</h1>
+    <h1>A Function to Edit Column Headers</h1>
     
-    <div class="hidden name"><code>nanocombine.Rd</code></div>
+    <div class="hidden name"><code>find_replace.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function allows you import and combine multiple data files into one data frame.</p>
+    <p>This function allows for finding and replacing patterns in column names.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nanocombine</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='no'>NTA_version</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>dir</th>
-      <td><p>The directory where files are located, defaults to global working directory</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Dataframe of nanosight values.</p>
-    
+    <pre class="usage"><span class='fu'>find_replace</span>(<span class='no'>df</span>, <span class='no'>find</span>, <span class='no'>replace</span>)</pre>
+        
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanocombine</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"file_folder"</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>NTA_version</span> <span class='kw'>=</span> <span class='fl'>3.2</span>)</div><div class='output co'>#&gt; <span class='message'>Reading in file </span></div><div class='output co'>#&gt; <span class='message'>bin_width = 1</span></div><div class='output co'>#&gt; <span class='message'>NTA_version = 3.2</span></div><div class='output co'>#&gt; <span class='error'>Error in purrr::map(csv_files, ~nanoimport(file = .x, bin_width = bin_width,     range = range, NTA_version = NTA_version)) %&gt;% dplyr::bind_cols(): could not find function "%&gt;%"</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>find_replace</span>(<span class='no'>df</span>, <span class='kw'>find</span> <span class='kw'>=</span> <span class='st'>"January 2018"</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='st'>"2018-01"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in df %&gt;% purrr::set_names(~(.) %&gt;% stringr::str_replace_all(find,     replace)): could not find function "%&gt;%"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

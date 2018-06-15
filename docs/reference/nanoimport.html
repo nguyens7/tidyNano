@@ -103,7 +103,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>nanoimport</span>(<span class='no'>file</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='no'>NTA_version</span>)</pre>
+    <pre class="usage"><span class='fu'>nanoimport</span>(<span class='no'>file</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='no'>NTA_version</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -120,7 +120,7 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanoimport</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"nanofile.csv"</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>NTA_version</span> <span class='kw'>=</span> <span class='fl'>3.2</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: cannot open file 'nanofile.csv': No such file or directory</span></div><div class='output co'>#&gt; <span class='error'>Error in file(file, "rt"): cannot open the connection</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanoimport</span>(<span class='kw'>file</span> <span class='kw'>=</span> <span class='st'>"nanofile.csv"</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>,, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>NTA_version</span> <span class='kw'>=</span> <span class='fl'>3.2</span>)</div><div class='output co'>#&gt; <span class='error'>Error in nanoimport(file = "nanofile.csv", bin_width = 1, , range = 1000,     NTA_version = 3.2): unused argument (alist())</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

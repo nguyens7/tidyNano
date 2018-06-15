@@ -137,27 +137,7 @@ Output of tidy dataframe of sums grouped by <code>...</code> labeled according t
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanocount</span>(<span class='no'>starwars</span>, <span class='no'>species</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"mass"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>mass</span>)</div><div class='output co'>#&gt; # A tibble: 38 x 3
-#&gt;    species   mass_N mass_count
-#&gt;    &lt;chr&gt;      &lt;int&gt;      &lt;dbl&gt;
-#&gt;  1 Aleena         1         15
-#&gt;  2 Besalisk       1        102
-#&gt;  3 Cerean         1         82
-#&gt;  4 Chagrian       0          0
-#&gt;  5 Clawdite       1         55
-#&gt;  6 Droid          4        279
-#&gt;  7 Dug            1         40
-#&gt;  8 Ewok           1         20
-#&gt;  9 Geonosian      1         80
-#&gt; 10 Gungan         2        148
-#&gt; # ... with 28 more rows</div><div class='input'><span class='fu'>nanocount</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"height"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>height</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 3
-#&gt;   gender        height_N height_count
-#&gt;   &lt;chr&gt;            &lt;int&gt;        &lt;int&gt;
-#&gt; 1 female              17         2813
-#&gt; 2 hermaphrodite        1          175
-#&gt; 3 male                59        10575
-#&gt; 4 none                 1          200
-#&gt; 5 &lt;NA&gt;                 3          360</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanocount</span>(<span class='no'>starwars</span>, <span class='no'>species</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"mass"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>mass</span>)</div><div class='output co'>#&gt; <span class='error'>Error in df %&gt;% dplyr::group_by(!!!group_var) %&gt;% dplyr::summarise(`:=`(!!N,     length(na.omit(!!param_var))), `:=`(!!total, sum(!!param_var,     na.rm = na.rm))): could not find function "%&gt;%"</span></div><div class='input'><span class='fu'>nanocount</span>(<span class='no'>starwars</span>, <span class='no'>gender</span>,<span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"height"</span>, <span class='kw'>param_var</span> <span class='kw'>=</span> <span class='no'>height</span>)</div><div class='output co'>#&gt; <span class='error'>Error in df %&gt;% dplyr::group_by(!!!group_var) %&gt;% dplyr::summarise(`:=`(!!N,     length(na.omit(!!param_var))), `:=`(!!total, sum(!!param_var,     na.rm = na.rm))): could not find function "%&gt;%"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

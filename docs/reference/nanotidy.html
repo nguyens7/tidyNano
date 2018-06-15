@@ -131,20 +131,7 @@ Sample and Count column.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanotidy</span>(<span class='no'>data</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>12</span>, <span class='kw'>sep_var</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Sample"</span>,<span class='st'>"Dilution"</span>,<span class='st'>"Treatment"</span>,<span class='st'>"Condition"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Expected 4 pieces. Additional pieces discarded in 11000 rows [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...].</span></div><div class='output co'>#&gt; # A tibble: 11,000 x 8
-#&gt;    particle_size std_10000_no_1_02 Sample Dilution Treatment Condition Count
-#&gt;            &lt;dbl&gt;             &lt;int&gt; &lt;fct&gt;     &lt;dbl&gt; &lt;fct&gt;     &lt;fct&gt;     &lt;dbl&gt;
-#&gt;  1           0.5                 0 std       10000 yes       2             0
-#&gt;  2           1.5                 0 std       10000 yes       2             0
-#&gt;  3           2.5                 0 std       10000 yes       2             0
-#&gt;  4           3.5                 0 std       10000 yes       2             0
-#&gt;  5           4.5                 0 std       10000 yes       2             0
-#&gt;  6           5.5                 0 std       10000 yes       2             0
-#&gt;  7           6.5                 0 std       10000 yes       2             0
-#&gt;  8           7.5                 0 std       10000 yes       2             0
-#&gt;  9           8.5                 0 std       10000 yes       2             0
-#&gt; 10           9.5                 0 std       10000 yes       2             0
-#&gt; # ... with 10,990 more rows, and 1 more variable: True_count &lt;dbl&gt;</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanotidy</span>(<span class='no'>data</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>12</span>, <span class='kw'>sep_var</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Sample"</span>,<span class='st'>"Dilution"</span>,<span class='st'>"Treatment"</span>,<span class='st'>"Condition"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in df %&gt;% tidyr::gather(Sample, Count, col) %&gt;% tidyr::separate(Sample,     into = sep_var, sep = "_", convert = TRUE) %&gt;% dplyr::mutate_at(vars(Count),     as.numeric): could not find function "%&gt;%"</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
