@@ -12,7 +12,7 @@
 #' @import tidyverse
 #' @export
 
-nanocombine2 <- function(dir = "",
+nanocombine <- function(dir = "",
                          bin_width = 1,
                          range = 1000,
                          NTA_version,
