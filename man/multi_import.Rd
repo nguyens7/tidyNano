@@ -8,6 +8,12 @@ multi_import(dir, range, bin_width, NTA_version)
 }
 \arguments{
 \item{dir}{The parent directory where folder and subsequent files are located, defaults to global working directory}
+
+\item{range}{The range of values used during NTA data acquisition, defaults to 1000.}
+
+\item{bin_width}{The bin width used during NTA data acquisition, defaults to 1.}
+
+\item{NTA_version}{Version of NTA software (2.3, 3.1, 3.2).}
 }
 \value{
 Dataframe of nanosight values.

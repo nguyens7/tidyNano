@@ -8,6 +8,12 @@ nanoimport(file, bin_width = 1, range = 1000, NTA_version)
 }
 \arguments{
 \item{file}{A .csv file from a Malvern Nanosight machine.}
+
+\item{bin_width}{The bin width used during NTA data acquisition, defaults to 1.}
+
+\item{range}{The range of values used during NTA data acquisition, defaults to 1000.}
+
+\item{NTA_version}{Version of NTA software (2.3,3.1,3.2).}
 }
 \value{
 Dataframe of nanosight values.

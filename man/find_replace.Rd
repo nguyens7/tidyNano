@@ -6,6 +6,13 @@
 \usage{
 find_replace(df, find, replace)
 }
+\arguments{
+\item{df}{file data frame.}
+
+\item{find}{A string from column names that will be replaced by the 'replace' string.}
+
+\item{replace}{A string that should be substituted in place of the 'find' string.}
+}
 \description{
 This function allows for finding and replacing patterns in column names.
 }
