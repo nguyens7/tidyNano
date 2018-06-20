@@ -4,7 +4,8 @@
 \alias{nanoimport}
 \title{A Nanosight Data Import Function}
 \usage{
-nanoimport(file, bin_width = 1, range = 1000, NTA_version)
+nanoimport(file, bin_width = 1, range = 1000, NTA_version,
+  extra_param = NULL)
 }
 \arguments{
 \item{file}{A .csv file from a Malvern Nanosight machine.}
@@ -14,6 +15,8 @@ nanoimport(file, bin_width = 1, range = 1000, NTA_version)
 \item{range}{The range of values used during NTA data acquisition, defaults to 1000.}
 
 \item{NTA_version}{Version of NTA software (2.3,3.1,3.2).}
+
+\item{extra_param}{Presence of additional data beside counts (Surface Area and Volume weighting)}
 }
 \value{
 Dataframe of nanosight values.

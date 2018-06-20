@@ -3,7 +3,7 @@
 export(find_replace)
 export(multi_import)
 export(nanoShapiro)
-export(nanocombine)
+export(nanocombine2)
 export(nanocount)
 export(nanoimport)
 export(nanolyze)

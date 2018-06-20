@@ -5,6 +5,7 @@
 #' @param bin_width The bin width used during NTA data acquisition, defaults to 1.
 #' @param range The range of values used during NTA data acquisition, defaults to 1000.
 #' @param NTA_version Version of NTA software (2.3,3.1,3.2).
+#' @param extra_param Presence of additional data beside counts (Surface Area and Volume weighting)
 #' @return Dataframe of nanosight values.
 #' @examples nanoimport(file = "nanofile.csv", bin_width = 1,, range = 1000, NTA_version = 3.2)
 #' @keywords import, load, extract
@@ -12,7 +13,10 @@
 #' @export
 
 
-nanoimport <- function(file, bin_width = 1, range = 1000, NTA_version) {
+nanoimport <- function(file, bin_width = 1,
+                        range = 1000,
+                        NTA_version,
+                        extra_param = NULL){
 
   if(NTA_version == 2.3){
 
@@ -38,9 +42,8 @@ nanoimport <- function(file, bin_width = 1, range = 1000, NTA_version) {
       dplyr::as_tibble()
 
     return(df2.3)
-  }
 
-  else if(NTA_version == 3.2){
+  }else if(NTA_version == 3.2 & is.null(extra_param)){
 
     header_skip <- 77
     df_skip <- 87
@@ -52,7 +55,15 @@ nanoimport <- function(file, bin_width = 1, range = 1000, NTA_version) {
     df_skip <- 86
     nm_start <- 0.5
 
+  }else if(NTA_version == 3.2 & extra_param == TRUE ){
+
+    header_skip <- 82
+    df_skip <- 92
+    nm_start <- 0.5
+
+
   }else{stop("Error: Please specify NTA version.")
+
   }
 
   num_rows <- length(seq(nm_start , range, bin_width))
