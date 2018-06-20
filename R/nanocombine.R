@@ -24,7 +24,7 @@ nanocombine <- function(dir = "",
   message(paste("bin_width =",bin_width))
   message(paste("NTA_version =",NTA_version))
 
-  complete_df <- purrr::map(csv_files, ~nanoimport2(file = .x,
+  complete_df <- purrr::map(csv_files, ~nanoimport(file = .x,
                                                     bin_width = bin_width,
                                                     range = range,
                                                     NTA_version = NTA_version,
