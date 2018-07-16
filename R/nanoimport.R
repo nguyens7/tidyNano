@@ -9,7 +9,7 @@
 #' @return Dataframe of nanosight values.
 #' @examples nanoimport(file = "nanofile.csv", bin_width = 1,, range = 1000, NTA_version = 3.2)
 #' @keywords import, load, extract
-#' @import tidyverse
+#' @import dplyr
 #' @export
 
 

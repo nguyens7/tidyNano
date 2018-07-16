@@ -10,7 +10,7 @@
 #' @examples
 #' nanotidy(data, col = 2:12, sep_var = c("Sample","Dilution","Treatment","Condition"))
 #' @keywords aggregate, clean, tidy
-#' @import tidyverse
+#' @import dplyr
 #' @export
 
 nanotidy <- function(df, col, sep_var){

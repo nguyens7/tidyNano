@@ -12,7 +12,7 @@
 #' nanocount(starwars, species,name = "mass", param_var = mass)
 #' nanocount(starwars, gender,name = "height", param_var = height)
 #' @keywords count, sum
-#' @import tidyverse
+#' @import dplyr
 #' @export
 
 nanocount <- function(df, ..., name = "Particle", param_var, na.rm = TRUE) {

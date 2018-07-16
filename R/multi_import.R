@@ -8,7 +8,7 @@
 #' @return Dataframe of nanosight values.
 #' @examples multi_import(dir = "parent_folder", bin_width = 1, range = 1000, NTA_version = 3.2)
 #' @keywords import, load, extract
-#' @import tidyverse
+#' @import purrr
 #' @export
 
 multi_import <- function(dir,range, bin_width, NTA_version ){
@@ -19,7 +19,7 @@ multi_import <- function(dir,range, bin_width, NTA_version ){
     as.list()
 
   file_path %>%
-    map(~nanocombine(dir = ., range = range,
+    purrr::map(~nanocombine(dir = ., range = range,
                      bin_width = bin_width,
                      NTA_version = NTA_version)) %>%
     as.data.frame()

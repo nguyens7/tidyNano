@@ -9,7 +9,7 @@
 #' @return Dataframe of nanosight values.
 #' @examples nanocombine(dir = "file_folder", bin_width = 1, range = 1000, NTA_version = 3.2)
 #' @keywords import, load, extract
-#' @import tidyverse
+#' @import tidyr
 #' @export
 
 nanocombine <- function(dir = "",

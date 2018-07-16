@@ -9,7 +9,7 @@
 #' nanonest(starwars, species)
 #' nanonest(starwars, gender)
 #' @keywords statistics, nesting, nested
-#' @import tidyverse
+#' @import dplyr
 #' @export
 
 

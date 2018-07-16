@@ -13,7 +13,7 @@
 #' nanolyze(starwars, species,name = "mass", param_var = mass)
 #' nanolyze(starwars, gender,name = "height", param_var = height)
 #' @keywords aggregate, summarize, summary statistics
-#' @import tidyverse
+#' @import dplyr
 #' @export
 
 
