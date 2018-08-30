@@ -4,14 +4,14 @@
 \alias{nanotidy}
 \title{A Tidy Function}
 \usage{
-nanotidy(df, col, sep_var)
+nanotidy(df, sep_var)
 }
 \arguments{
 \item{df}{A dataframe.}
 
-\item{col}{Specify the range of columns to tidy (x:z).}
-
 \item{sep_var}{Numerical range of columns to tidy, specify "2:n" where n is the last column}
+
+\item{col}{Specify the range of columns to tidy (x:z).}
 }
 \value{
 Gathers values from 'wide' to 'long' format. Returns a dataframe with a

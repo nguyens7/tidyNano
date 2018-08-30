@@ -13,7 +13,9 @@
 #' @import dplyr
 #' @export
 
-nanotidy <- function(df, col, sep_var){
+nanotidy <- function(df, sep_var){
+
+  col <- 2: ncol(df)
 
   tidy_df <- df %>%
     tidyr::gather(Sample, Count, col) %>%

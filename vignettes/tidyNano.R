@@ -20,8 +20,7 @@ data
 
 ## ------------------------------------------------------------------------
 tidy_data <- nanoimport(file, NTA_version = 3.2) %>% 
-  nanotidy(col = 2:13, 
-           sep_var = c("Sample", "Dilution","Filter",
+  nanotidy( sep_var = c("Sample", "Dilution","Filter",
                        "Injection","Tech_rep")) 
 
 tidy_data
