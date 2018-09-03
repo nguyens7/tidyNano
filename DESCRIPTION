@@ -11,7 +11,7 @@ Description: A framework to clean, calculate summary statistics,
 License: MIT
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr, tidyr, here, broom, rlang, purrr, stringr
+Imports: dplyr, tidyr, glue, here, broom, rlang, purrr, stringr
 RoxygenNote: 6.1.0
 Suggests: knitr,
     rmarkdown

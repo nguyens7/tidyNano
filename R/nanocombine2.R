@@ -15,7 +15,7 @@
 
 
 
-nanocombine_noob <- function(dir = "",
+nanocombine2 <- function(dir = "",
                              range = 1000,
                              bin_width = 1,
                              nm_start = 0.5,

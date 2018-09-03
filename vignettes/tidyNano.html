@@ -12,7 +12,7 @@
 
 <meta name="author" content="Sean Nguyen" />
 
-<meta name="date" content="2018-08-30" />
+<meta name="date" content="2018-09-03" />
 
 <title>tidyNano Vignette</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">tidyNano Vignette</h1>
 <h4 class="author"><em>Sean Nguyen</em></h4>
-<h4 class="date"><em>2018-08-30</em></h4>
+<h4 class="date"><em>2018-09-03</em></h4>
 
 
 
@@ -100,7 +100,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="co">#&gt; 5                                        </span>
 <span class="co">#&gt; 6</span></code></pre></div>
 <p><code>nanoimport</code> is a function that extracts the particle data from raw a nanosight .csv file and creates a dataframe that is suitable for cleaning within R.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">nanoimport</span>(file, <span class="dt">NTA_version =</span> <span class="fl">3.2</span>) 
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">nanoimport2</span>(file) 
+<span class="co">#&gt; NTA version: 3.2</span>
+<span class="co">#&gt; Sample name:</span>
+<span class="co">#&gt; Number of parameters detected: 1</span>
+<span class="co">#&gt; Dilution factor: Not recorded</span>
+<span class="co">#&gt; Auto name = FALSE</span>
+<span class="co">#&gt; Custom name: NULL</span>
 
 data
 <span class="co">#&gt; # A tibble: 1,000 x 13</span>
@@ -125,9 +131,15 @@ data
 <div id="nanotidy" class="section level2">
 <h2>nanotidy</h2>
 <p><code>nanotidy</code> is a function that facilitates the conversion of a dataframe to make it tidy for easy data visualization with ggplot2 and data manipulation with dplyr.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data &lt;-<span class="st"> </span><span class="kw">nanoimport</span>(file, <span class="dt">NTA_version =</span> <span class="fl">3.2</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data &lt;-<span class="st"> </span><span class="kw">nanoimport2</span>(file) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw">nanotidy</span>( <span class="dt">sep_var =</span> <span class="kw">c</span>(<span class="st">&quot;Sample&quot;</span>, <span class="st">&quot;Dilution&quot;</span>,<span class="st">&quot;Filter&quot;</span>,
                        <span class="st">&quot;Injection&quot;</span>,<span class="st">&quot;Tech_rep&quot;</span>)) 
+<span class="co">#&gt; NTA version: 3.2</span>
+<span class="co">#&gt; Sample name:</span>
+<span class="co">#&gt; Number of parameters detected: 1</span>
+<span class="co">#&gt; Dilution factor: Not recorded</span>
+<span class="co">#&gt; Auto name = FALSE</span>
+<span class="co">#&gt; Custom name: NULL</span>
 
 tidy_data
 <span class="co">#&gt; # A tibble: 12,000 x 8</span>

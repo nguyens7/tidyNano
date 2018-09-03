@@ -27,12 +27,12 @@ nanoimport2 <- function(file,
     str_sub(18,20) %>%
     as.numeric()
 
-  message(glue("NTA version: {NTA_version}"))
+  message(glue::glue("NTA version: {NTA_version}"))
 
   # Sample name
   sample_name <- read.csv(file, header = FALSE, blank.lines.skip = FALSE)[7,2]
 
-  message(glue("Sample name: {sample_name}"))
+  message(glue::glue("Sample name: {sample_name}"))
 
   # Detect number of parameters
   param <- suppressWarnings(readr::read_csv(file, skip = 71,
@@ -46,7 +46,7 @@ nanoimport2 <- function(file,
 
   param_num <- param$num - 1
 
-  message(glue("Number of parameters detected: {param_num}"))
+  message(glue::glue("Number of parameters detected: {param_num}"))
 
   # Dilution factor
   dilution <- read.csv(file, header = FALSE, skip = 42, nrows = 1)[,2]
