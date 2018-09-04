@@ -24,7 +24,7 @@ nanoimport2 <- function(file,
 
   # NTA version
   NTA_version <- read.csv(file, header = FALSE)[2,1] %>%
-    str_sub(18,20) %>%
+    stringr::str_sub(18,20) %>%
     as.numeric()
 
   message(glue::glue("NTA version: {NTA_version}"))
@@ -36,8 +36,8 @@ nanoimport2 <- function(file,
 
   # Detect number of parameters
   param <- suppressWarnings(readr::read_csv(file, skip = 71,
-                                     n_max = 20,
-                                     col_types = cols()))[,1] %>%
+                                            n_max = 20,
+                                            col_types = cols()))[,1] %>%
     dplyr::rename(data = `[Data Included]`) %>%
     tidyr::drop_na() %>%
     dplyr::mutate(num = row_number()) %>%
@@ -49,9 +49,10 @@ nanoimport2 <- function(file,
   message(glue::glue("Number of parameters detected: {param_num}"))
 
   # Dilution factor
-  dilution <- read.csv(file, header = FALSE, skip = 42, nrows = 1)[,2]
+  dilution <- read.csv(file, header = FALSE, skip = 42, nrows = 1)[,2] %>%
+    as.numeric()
 
-  message(glue::glue("Dilution factor: {dilution}"))
+  message(glue::glue("Dilution factor detected: {dilution}"))
 
   # Import
   if(NTA_version == 2.3){
@@ -70,18 +71,22 @@ nanoimport2 <- function(file,
     header_skip <- 76 + param_num
     df_skip <- header_skip + 10
     gen_auto_name <- ""
+    dilution <- 1
 
     message(glue::glue("Auto name = FALSE
-                 Custom name: NULL"))
+                       Custom name: NULL
+                       Dilution value: {dilution} (Didn't parse)"))
 
   }else if(NTA_version == 3.2 && auto_name == FALSE ){
 
     header_skip <- 76 + param_num
     df_skip <- header_skip + 10
     gen_auto_name <- paste0("_", custom_name)
+    dilution <- 1
 
     message(glue::glue("Auto name = FALSE
-                 Custom name: {custom_name}"))
+                       Custom name: {custom_name}
+                       Dilution value: {dilution} (Didn't parse)"))
 
   }else if(NTA_version == 3.2 && auto_name == TRUE && is.null(custom_name) ){
     header_skip <- 76 + param_num
@@ -89,7 +94,8 @@ nanoimport2 <- function(file,
     gen_auto_name <- paste0("_", sample_name, "_", dilution)
 
     message(glue::glue("Auto name: {gen_auto_name}
-                 Custom name: NULL"))
+                       Custom name: NULL
+                       Dilution value: {dilution}"))
 
   }else if(NTA_version == 3.2 && auto_name == TRUE ){
 
@@ -98,9 +104,11 @@ nanoimport2 <- function(file,
     gen_auto_name <- paste0("_", custom_name, "_", sample_name, "_", dilution)
 
     message(glue::glue("Auto name: {gen_auto_name}
-                 Custom name: {custom_name}"))
+                       Custom name: {custom_name}
+                       Dilution value: {dilution}"))
   }
 
+  # Generation of data frame
   num_rows <- length(seq(nm_start , range, bin_width))
 
   header <- read.csv(file, skip = header_skip, header = FALSE,
@@ -113,10 +121,17 @@ nanoimport2 <- function(file,
 
   df <-  df[!is.na(names(df))] # Remove NA column
 
-  df %>%
+  part_size <- df %>%
     dplyr::rename(particle_size = Filename) %>%
-    dplyr::select(-Average, -`Standard Error`) %>%
-    dplyr::rename_at(vars(-particle_size), ~ paste0(., gen_auto_name)) %>%
-    dplyr::as_tibble()
+    dplyr::select(particle_size)
+
+  NTA_data <- df %>%
+    dplyr::select(-Filename, -Average, -`Standard Error`) %>%
+    dplyr::rename_all( ~ paste0(., gen_auto_name)) %>%
+    dplyr::as_tibble() %>%
+    dplyr::mutate_all(funs( . / dilution))
+
+  part_size %>%
+    dplyr::bind_cols(NTA_data)
 
   }

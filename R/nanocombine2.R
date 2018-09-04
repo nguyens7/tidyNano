@@ -16,26 +16,27 @@
 
 
 nanocombine2 <- function(dir = "",
-                             range = 1000,
-                             bin_width = 1,
-                             nm_start = 0.5,
-                             auto_name = FALSE,
-                             custom_name = NULL ){
+                         range = 1000,
+                         bin_width = 1,
+                         nm_start = 0.5,
+                         auto_name = FALSE,
+                         custom_name = NULL ){
 
   csv_files <- here::here(dir = dir) %>%
-    list.files(pattern = "*.csv", full.names = TRUE)
+    list.files(pattern = "*.csv",full.names = TRUE)
 
   message(glue::glue("Detected the following files {csv_files}"))
 
   complete_df <- purrr::map(csv_files, ~nanoimport2(file = .x,
-                                                        range = range,
-                                                        bin_width = bin_width,
-                                                        nm_start = nm_start,
-                                                        auto_name = auto_name,
-                                                        custom_name = custom_name)) %>%
+                                                    range = range,
+                                                    bin_width = bin_width,
+                                                    nm_start = nm_start,
+                                                    auto_name = auto_name,
+                                                    custom_name = custom_name)) %>%
     dplyr::bind_cols()
 
-  part_size_df <- complete_df[,1]
+  part_size_df <- complete_df %>%
+    select(particle_size)
 
   sample_df <- complete_df %>%
     dplyr::select(-starts_with("particle_size"))
