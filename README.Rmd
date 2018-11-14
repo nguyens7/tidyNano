@@ -1,19 +1,17 @@
 ---
-output:
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 
-```{r, echo = FALSE, message = FALSE}
-# knitr::opts_chunk$set(
-#   fig.align = 'center',
-#   collapse = TRUE,
-#   comment = "#>",
-#   fig.path = "man/figures/README-")
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/"
+)
 ```
 
-# tidyNano <img src="man/figures/tidyNano.png" align="right" width = 150/>
-
+# tidyNano <img src="man/figures/tidyNano.png" align="right" width = "120" />
 
 tidyNano is a package that imports raw NanoSight data and provides the framework to clean, analyze, and visualize nanoparticle analysis data.
 
@@ -36,13 +34,13 @@ file <- system.file("extdata", "beads.csv", package = "tidyNano")
 
 data <- nanoimport(file)  
 
-data
+head(data)
 ```
 ```{r}
 tidy_data <- data  %>% 
   nanotidy(sep_var = c("Sample", "Dilution","Filter","Injection","Tech_rep"))
 
-tidy_data
+head(tidy_data)
 ```
 
 ```{r}
