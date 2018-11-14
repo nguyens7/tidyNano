@@ -4,28 +4,30 @@
 \alias{nanoimport}
 \title{A Nanosight Data Import Function}
 \usage{
-nanoimport(file, bin_width = 1, range = 1000, NTA_version,
-  extra_param = NULL)
+nanoimport(file, range = 1000, bin_width = 1, nm_start = 0.5,
+  auto_name = FALSE, custom_name = NULL)
 }
 \arguments{
 \item{file}{A .csv file from a Malvern Nanosight machine.}
 
-\item{bin_width}{The bin width used during NTA data acquisition, defaults to 1.}
-
 \item{range}{The range of values used during NTA data acquisition, defaults to 1000.}
 
-\item{NTA_version}{Version of NTA software (2.3,3.1,3.2).}
+\item{bin_width}{The bin width used during NTA data acquisition, defaults to 1.}
 
-\item{extra_param}{Presence of additional data beside counts (Surface Area and Volume weighting)}
+\item{nm_start}{Starting measurement value (nm), defaults to 0.5nm}
+
+\item{auto_name}{Extracts sample and dilution data and appends to column header, defaults to FALSE.}
+
+\item{custom_name}{Append custom name to column header, defaults to NULL.}
 }
 \value{
-Dataframe of nanosight values.
+Dataframe of NTA data.
 }
 \description{
 This function allows you aggregate or summarize your data by groups.
 }
 \examples{
-nanoimport(file = "nanofile.csv", bin_width = 1,, range = 1000, NTA_version = 3.2)
+nanoimport(file = "nanofile.csv")
 }
 \keyword{extract}
 \keyword{import,}

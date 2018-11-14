@@ -5,9 +5,6 @@
 #' @param ... Columns to group by.
 #' @param value The numerical value that you want to summarize.
 #' @return A nested data frame grouped by \code{...} and columns for Shapiro Test.
-#' @examples
-#' nanoShapiro(starwars, species, param_var = mass)
-#' nanoShapiro(starwars, gender, param_var = height)
 #' @keywords statistics, parametric test, normality, nested
 #' @import broom
 #' @export

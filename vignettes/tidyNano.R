@@ -14,16 +14,16 @@ file <- system.file("extdata", "beads.csv", package = "tidyNano")
 read.csv(file) %>% head()
 
 ## ------------------------------------------------------------------------
-data <- nanoimport2(file) 
+data <- nanoimport(file) 
 
-data
+head(data)
 
 ## ------------------------------------------------------------------------
-tidy_data <- nanoimport2(file) %>% 
+tidy_data <- nanoimport(file) %>% 
   nanotidy( sep_var = c("Sample", "Dilution","Filter",
                        "Injection","Tech_rep")) 
 
-tidy_data
+head(tidy_data)
 
 ## ------------------------------------------------------------------------
 tidy_data %>% 
@@ -37,7 +37,7 @@ Tech_avg_data <- tidy_data %>%
            name = "Tech_rep",
            param_var = True_count)
 
-Tech_avg_data
+head(Tech_avg_data)
 
 ## ------------------------------------------------------------------------
 Tech_avg_data %>% 
@@ -51,7 +51,7 @@ Injection_avg_data <- Tech_avg_data %>%
            name = "Injection",
            param_var = Tech_rep_mean)
 
-Injection_avg_data
+head(Injection_avg_data)
 
 ## ------------------------------------------------------------------------
 Injection_avg_data %>% 

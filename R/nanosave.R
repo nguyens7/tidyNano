@@ -3,7 +3,7 @@
 #' This function exports data frames into Rds files.
 #' @param df file data frame.
 #' @param name The name of the Rds file, defaults to "tidyNano.Rds".
-#' @examples nanosave(stawars, name = "Star_Wars")
+#' @examples nanosave(iris, name = "iris")
 #' @keywords save, export
 #' @export
 

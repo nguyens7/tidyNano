@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -33,6 +35,7 @@
 <meta property="og:description" content="This function allows you tidy Nanosight data.  It will make the data go from
 'wide' to 'long'." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -59,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyNano</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.1</span>
       </span>
     </div>
 
@@ -105,7 +108,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>nanotidy</span>(<span class='no'>df</span>, <span class='no'>col</span>, <span class='no'>sep_var</span>)</pre>
+    <pre class="usage"><span class='fu'>nanotidy</span>(<span class='no'>df</span>, <span class='no'>sep_var</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -115,12 +118,12 @@
       <td><p>A dataframe.</p></td>
     </tr>
     <tr>
-      <th>col</th>
-      <td><p>Specify the range of columns to tidy (x:z).</p></td>
-    </tr>
-    <tr>
       <th>sep_var</th>
       <td><p>Numerical range of columns to tidy, specify "2:n" where n is the last column</p></td>
+    </tr>
+    <tr>
+      <th>col</th>
+      <td><p>Specify the range of columns to tidy (x:z).</p></td>
     </tr>
     </table>
     
@@ -131,7 +134,7 @@ Sample and Count column.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanotidy</span>(<span class='no'>data</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>12</span>, <span class='kw'>sep_var</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Sample"</span>,<span class='st'>"Dilution"</span>,<span class='st'>"Treatment"</span>,<span class='st'>"Condition"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in df %&gt;% tidyr::gather(Sample, Count, col) %&gt;% tidyr::separate(Sample,     into = sep_var, sep = "_", convert = TRUE) %&gt;% dplyr::mutate_at(vars(Count),     as.numeric): could not find function "%&gt;%"</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanotidy</span>(<span class='no'>data</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='fl'>2</span>:<span class='fl'>12</span>, <span class='kw'>sep_var</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"Sample"</span>,<span class='st'>"Dilution"</span>,<span class='st'>"Treatment"</span>,<span class='st'>"Condition"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in nanotidy(data, col = 2:12, sep_var = c("Sample", "Dilution",     "Treatment", "Condition")): unused argument (col = 2:12)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

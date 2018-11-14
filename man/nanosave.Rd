@@ -15,7 +15,7 @@ nanosave(df, name = "tidyNano")
 This function exports data frames into Rds files.
 }
 \examples{
-nanosave(stawars, name = "Star_Wars")
+nanosave(iris, name = "iris")
 }
 \keyword{export}
 \keyword{save,}

@@ -34,19 +34,19 @@ read.csv(file) %>% head()
 ```
 `nanoimport` is a function that extracts the particle data from raw a nanosight .csv file and creates a dataframe that is suitable for cleaning within R.
 ```{r}
-data <- nanoimport2(file) 
+data <- nanoimport(file) 
 
-data
+head(data)
 ```
 
 ## nanotidy
 `nanotidy` is a function that facilitates the conversion of a dataframe to make it tidy for easy data visualization with ggplot2 and data manipulation with dplyr.
 ```{r}
-tidy_data <- nanoimport2(file) %>% 
+tidy_data <- nanoimport(file) %>% 
   nanotidy( sep_var = c("Sample", "Dilution","Filter",
                        "Injection","Tech_rep")) 
 
-tidy_data
+head(tidy_data)
 ```
 
 
@@ -68,7 +68,7 @@ Tech_avg_data <- tidy_data %>%
            name = "Tech_rep",
            param_var = True_count)
 
-Tech_avg_data
+head(Tech_avg_data)
 ```
 
 The technical average data can be visualized with ggpplot2.
@@ -86,7 +86,7 @@ Injection_avg_data <- Tech_avg_data %>%
            name = "Injection",
            param_var = Tech_rep_mean)
 
-Injection_avg_data
+head(Injection_avg_data)
 ```
 
 

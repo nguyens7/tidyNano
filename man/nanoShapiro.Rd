@@ -19,10 +19,6 @@ A nested data frame grouped by \code{...} and columns for Shapiro Test.
 \description{
 This function allows you aggregate or summarize your data by groups.
 }
-\examples{
-nanoShapiro(starwars, species, param_var = mass)
-nanoShapiro(starwars, gender, param_var = height)
-}
 \keyword{nested}
 \keyword{normality,}
 \keyword{parametric}

@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -32,6 +34,7 @@
 
 <meta property="og:description" content="This function allows you import and combine multiple data files into one data frame." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -58,7 +61,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyNano</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.1</span>
       </span>
     </div>
 
@@ -103,7 +106,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>nanocombine</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='no'>NTA_version</span>)</pre>
+    <pre class="usage"><span class='fu'>nanocombine</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>nm_start</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>auto_name</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>custom_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -112,15 +116,35 @@
       <th>dir</th>
       <td><p>The directory where files are located, defaults to global working directory</p></td>
     </tr>
+    <tr>
+      <th>range</th>
+      <td><p>The range of values used during NTA data acquisition, defaults to 1000.</p></td>
+    </tr>
+    <tr>
+      <th>bin_width</th>
+      <td><p>The bin width used during NTA data acquisition, defaults to 1.</p></td>
+    </tr>
+    <tr>
+      <th>nm_start</th>
+      <td><p>Starting measurement value (nm), defaults to 0.5nm</p></td>
+    </tr>
+    <tr>
+      <th>auto_name</th>
+      <td><p>Extracts sample and dilution data and appends to column header, defaults to FALSE.</p></td>
+    </tr>
+    <tr>
+      <th>custom_name</th>
+      <td><p>Append custom name to column header, defaults to NULL.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Dataframe of nanosight values.</p>
+    <p>Dataframe of NTA data.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nanocombine</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"file_folder"</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>NTA_version</span> <span class='kw'>=</span> <span class='fl'>3.2</span>)</div><div class='output co'>#&gt; <span class='message'>Reading in file </span></div><div class='output co'>#&gt; <span class='message'>bin_width = 1</span></div><div class='output co'>#&gt; <span class='message'>NTA_version = 3.2</span></div><div class='output co'>#&gt; <span class='error'>Error in purrr::map(csv_files, ~nanoimport(file = .x, bin_width = bin_width,     range = range, NTA_version = NTA_version)) %&gt;% dplyr::bind_cols(): could not find function "%&gt;%"</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>nanocombine</span>(<span class='kw'>dir</span> <span class='kw'>=</span> <span class='st'>"file_folder"</span>)</div><div class='output co'>#&gt; </div><div class='output co'>#&gt; <span class='error'>Error in .f(.x[[i]], ...): object 'particle_size' not found</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

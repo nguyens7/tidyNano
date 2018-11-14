@@ -23,11 +23,15 @@ Imports:
     stats,
     utils,
     purrr, 
+    shiny,
+    readr,
+    ggplot2,
     stringr
 RoxygenNote: 6.1.0
 Suggests: 
     knitr,
     devtools,
     roxygen2,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr

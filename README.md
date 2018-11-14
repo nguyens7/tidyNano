@@ -22,7 +22,7 @@ library(tidyverse)
 
 file <- system.file("extdata", "beads.csv", package = "tidyNano")
 
-data <- nanoimport(file, NTA_version = 3.2)  
+data <- nanoimport(file)  
 
 data
 ```
@@ -48,8 +48,7 @@ data
 
 ``` r
 tidy_data <- data  %>% 
-  nanotidy(col = 2:13, 
-           sep_var = c("Sample", "Dilution","Filter","Injection","Tech_rep"))
+  nanotidy(sep_var = c("Sample", "Dilution","Filter","Injection","Tech_rep"))
 
 tidy_data
 ```
