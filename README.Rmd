@@ -13,7 +13,16 @@ knitr::opts_chunk$set(
 
 # tidyNano <img src="man/figures/tidyNano.png" align="right" width = "120" />
 
-tidyNano is a package that imports raw NanoSight data and provides the framework to clean, analyze, and visualize nanoparticle analysis data.
+
+tidyNano is an R package that imports raw NanoSight  data and provides a framework to clean, analyze, and visualize nanoparticle analysis data.  
+
+# Overview
+
+<img src="man/figures/tidyNano_Schema.png" align="center" width = "600"/>  
+
+tidyNano functions (Purple) allow for easily extracting and converting raw NTA count data into a tidy dataframe that is suitable for analysis using dplyr and ggplot2.  tidyNano also provides a interactive shiny application (shinySIGHT) for visualizing data.
+
+<img src="man/figures/tidyNano_workflow.png" align="center" width = "400"/>
 
 ## Installation
 
