@@ -45,7 +45,7 @@ shinySIGHT <- function() {
       ),
 
       mainPanel(
-        img(src = "https://github.com/nguyens7/tidyNano/blob/master/man/figures/tidyNano.png?raw=true", width = "90px", align = "right"),
+        img(src = "https://raw.githubusercontent.com/nguyens7/tidyNano/master/man/figures/tidyNano.png", width = "90px", align = "right"),
         helpText("This is a R Shiny application that allows users to upload files
                  .Rds files (from tidyNano analysis) and interactively visualize data."),
         # textOutput("selected_facets"),
