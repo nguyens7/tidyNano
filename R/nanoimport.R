@@ -8,7 +8,6 @@
 #' @param auto_name Extracts sample and dilution data and appends to column header, defaults to FALSE.
 #' @param custom_name Append custom name to column header, defaults to NULL.
 #' @return Dataframe of NTA data.
-#' @examples nanoimport(file = "nanofile.csv")
 #' @keywords import, load, extract
 #' @import dplyr
 #' @export
@@ -37,7 +36,7 @@ nanoimport <- function(file,
   # Detect number of parameters
   param <- suppressWarnings(readr::read_csv(file, skip = 71,
                                             n_max = 20,
-                                            col_types = cols()))[,1] %>%
+                                            col_types = readr::cols()))[,1] %>%
     dplyr::rename(data = `[Data Included]`) %>%
     tidyr::drop_na() %>%
     dplyr::mutate(num = row_number()) %>%

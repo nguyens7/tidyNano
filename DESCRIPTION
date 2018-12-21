@@ -10,7 +10,7 @@ Description: A framework to clean, calculate summary statistics,
     one observation and columns represent variables.
 Depends: 
     R (>= 3.4)
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
@@ -24,6 +24,9 @@ Imports:
     utils,
     purrr, 
     shiny,
+    DT,
+    plotly,
+    shinythemes,
     readr,
     ggplot2,
     stringr

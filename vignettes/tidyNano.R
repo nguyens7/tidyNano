@@ -6,7 +6,9 @@ knitr::opts_chunk$set(
 
 ## ----message=FALSE, warning=FALSE----------------------------------------
 library(tidyNano)
-library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
 
 ## ------------------------------------------------------------------------
 file <- system.file("extdata", "beads.csv", package = "tidyNano")

@@ -8,7 +8,6 @@
 #' @param auto_name Extracts sample and dilution data and appends to column header, defaults to FALSE.
 #' @param custom_name Append custom name to column header, defaults to NULL.
 #' @return Dataframe of NTA data.
-#' @examples nanocombine(dir = "file_folder")
 #' @keywords import, load, extract
 #' @import tidyr
 #' @export

@@ -26,9 +26,6 @@ Dataframe of NTA data.
 \description{
 This function allows you import and combine multiple data files into one data frame.
 }
-\examples{
-nanocombine(dir = "file_folder")
-}
 \keyword{extract}
 \keyword{import,}
 \keyword{load,}

@@ -10,8 +10,6 @@ nanotidy(df, sep_var)
 \item{df}{A dataframe.}
 
 \item{sep_var}{Numerical range of columns to tidy, specify "2:n" where n is the last column}
-
-\item{col}{Specify the range of columns to tidy (x:z).}
 }
 \value{
 Gathers values from 'wide' to 'long' format. Returns a dataframe with a
@@ -20,9 +18,6 @@ Sample and Count column.
 \description{
 This function allows you tidy Nanosight data.  It will make the data go from
 'wide' to 'long'.
-}
-\examples{
-nanotidy(data, col = 2:12, sep_var = c("Sample","Dilution","Treatment","Condition"))
 }
 \keyword{aggregate,}
 \keyword{clean,}

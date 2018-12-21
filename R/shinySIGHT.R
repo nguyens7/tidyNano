@@ -1,18 +1,12 @@
+#' A Shiny Application
+#'
+#' This function allows for interactive visualization of NTA data.
+#' @import shiny
 #' @export
-#'
-#'
-#'
-#'
+
 
 
 shinySIGHT <- function() {
-
-  library(shiny)
-  library(tidyverse)
-  library(shinythemes)
-  library(plotly)
-
-
 
   # UI ----------------------------------------------------------------------
   # Increase Size Upload

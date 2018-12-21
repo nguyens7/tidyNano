@@ -26,9 +26,6 @@ Dataframe of NTA data.
 \description{
 This function allows you aggregate or summarize your data by groups.
 }
-\examples{
-nanoimport(file = "nanofile.csv")
-}
 \keyword{extract}
 \keyword{import,}
 \keyword{load,}
