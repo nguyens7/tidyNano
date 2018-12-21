@@ -10,7 +10,7 @@ nanoimport(file, range = 1000, bin_width = 1, nm_start = 0.5,
 \arguments{
 \item{file}{A .csv file from a Malvern Nanosight machine.}
 
-\item{range}{The range of values used during NTA data acquisition, defaults to 1000.}
+\item{range}{The range of values (nm) used during NTA data acquisition, defaults to 1000.}
 
 \item{bin_width}{The bin width used during NTA data acquisition, defaults to 1.}
 

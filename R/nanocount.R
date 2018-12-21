@@ -9,8 +9,8 @@
 #' @return Sum of particle count \code{parm_var} grouped by \code{...}.
 #' Output of tidy dataframe of sums grouped by \code{...} labeled according to 'name' argument.
 #' @examples
-#' nanocount(starwars, species,name = "mass", param_var = mass)
-#' nanocount(starwars, gender,name = "height", param_var = height)
+#' nanocount(mtcars, cyl ,name = "hp", param_var = hp)
+#' nanocount(iris,Species, name = "Sepal_Width", param_var = Sepal.Width)
 #' @keywords count, sum
 #' @import dplyr
 #' @export

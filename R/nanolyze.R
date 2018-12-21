@@ -5,13 +5,13 @@
 #' @param ... Columns to group by.
 #' @param name Prefix name to summary statistics
 #' @param param_var The numerical value that you want to summarize.
-#' @param na.rm Argument for ignore 'NA' values
+#' @param na.rm Argument to ignore 'NA' values, defaults to TRUE.
 #' @return Summarized values \code{parm_var} grouped by \code{...}.
 #' Output of tidy dataframe of grouped by \code{...} variables, N, mean,
 #' standard deviation and standard error labeled according to 'name' argument.
 #' @examples
-#' nanolyze(starwars, species,name = "mass", param_var = mass)
-#' nanolyze(starwars, gender,name = "height", param_var = height)
+#' nanolyze(mtcars, cyl ,name = "hp", param_var = hp)
+#' nanolyze(iris,Species, name = "Sepal_Width", param_var = Sepal.Width)
 #' @keywords aggregate, summarize, summary statistics
 #' @import dplyr
 #' @export

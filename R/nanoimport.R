@@ -2,7 +2,7 @@
 #'
 #' This function allows you aggregate or summarize your data by groups.
 #' @param file A .csv file from a Malvern Nanosight machine.
-#' @param range The range of values used during NTA data acquisition, defaults to 1000.
+#' @param range The range of values (nm) used during NTA data acquisition, defaults to 1000.
 #' @param bin_width The bin width used during NTA data acquisition, defaults to 1.
 #' @param nm_start Starting measurement value (nm), defaults to 0.5nm
 #' @param auto_name Extracts sample and dilution data and appends to column header, defaults to FALSE.

@@ -2,7 +2,7 @@
 #'
 #' This function allows you import and combine multiple data files into one data frame.
 #' @param dir The directory where files are located, defaults to global working directory
-#' @param range The range of values used during NTA data acquisition, defaults to 1000.
+#' @param range The range of particle size values (nm) used during NTA data acquisition, defaults to 1000.
 #' @param bin_width The bin width used during NTA data acquisition, defaults to 1.
 #' @param nm_start Starting measurement value (nm), defaults to 0.5nm
 #' @param auto_name Extracts sample and dilution data and appends to column header, defaults to FALSE.

@@ -25,8 +25,8 @@ Output of tidy dataframe of sums grouped by \code{...} labeled according to 'nam
 This function allows you aggregate or summarize your data by groups.
 }
 \examples{
-nanocount(starwars, species,name = "mass", param_var = mass)
-nanocount(starwars, gender,name = "height", param_var = height)
+nanocount(mtcars, cyl ,name = "hp", param_var = hp)
+nanocount(iris,Species, name = "Sepal_Width", param_var = Sepal.Width)
 }
 \keyword{count,}
 \keyword{sum}

@@ -6,8 +6,8 @@
 #' @return A nested data frame grouped by \code{...} , suitable for using mutate and map to
 #' perform statistical tests.
 #' @examples
-#' nanonest(starwars, species)
-#' nanonest(starwars, gender)
+#' nanonest(mtcars, cyl)
+#' nanonest(iris, Species)
 #' @keywords statistics, nesting, nested
 #' @import dplyr
 #' @export

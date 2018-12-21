@@ -19,8 +19,8 @@ perform statistical tests.
 This function allows you aggregate or summarize your data by groups.
 }
 \examples{
-nanonest(starwars, species)
-nanonest(starwars, gender)
+nanonest(mtcars, cyl)
+nanonest(iris, Species)
 }
 \keyword{nested}
 \keyword{nesting,}

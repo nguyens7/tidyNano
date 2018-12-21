@@ -15,7 +15,7 @@ nanolyze(df, ..., name = "Param", param_var, na.rm = TRUE)
 
 \item{param_var}{The numerical value that you want to summarize.}
 
-\item{na.rm}{Argument for ignore 'NA' values}
+\item{na.rm}{Argument to ignore 'NA' values, defaults to TRUE.}
 }
 \value{
 Summarized values \code{parm_var} grouped by \code{...}.
@@ -26,8 +26,8 @@ standard deviation and standard error labeled according to 'name' argument.
 This function allows you aggregate or summarize your data by groups.
 }
 \examples{
-nanolyze(starwars, species,name = "mass", param_var = mass)
-nanolyze(starwars, gender,name = "height", param_var = height)
+nanolyze(mtcars, cyl ,name = "hp", param_var = hp)
+nanolyze(iris,Species, name = "Sepal_Width", param_var = Sepal.Width)
 }
 \keyword{aggregate,}
 \keyword{statistics}
