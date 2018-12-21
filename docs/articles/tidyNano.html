@@ -78,7 +78,9 @@
 <a href="#tidynano-vignette" class="anchor"></a>tidyNano Vignette</h1>
 <p>tidyNano is a package that imports raw Nanosight data and faciliates the process of tidying the data so it is suitable for visualizing with ggplot2 and data manipulation with dplyr. tidyNano also has functions to facilitate the rapid generation of summary statistics by groups to assist with calculating technical replicate and within group mean, standard deviation, and standard error.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyNano)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</code></pre></div>
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyr)</code></pre></div>
 <div id="nanoimport" class="section level2">
 <h2 class="hasAnchor">
 <a href="#nanoimport" class="anchor"></a>nanoimport</h2>
@@ -165,9 +167,9 @@
 <span class="co">#&gt; 6           5.5    std    10000    yes         2        0     0          0</span></code></pre></div>
 <p>Once the data is in the tidy format it can be easily visualized using existing libraries such as ggplot2.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> True_count, <span class="dt">color =</span> Tech_rep)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(Injection <span class="op">~</span><span class="st"> </span>Filter)</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> True_count, <span class="dt">color =</span> Tech_rep)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(Injection <span class="op">~</span><span class="st"> </span>Filter)</code></pre></div>
 <p><img src="tidyNano_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 </div>
 <div id="nanolyze" class="section level2">
@@ -193,9 +195,9 @@
 <span class="co">#&gt; # ... with 2 more variables: Tech_rep_sd &lt;dbl&gt;, Tech_rep_se &lt;dbl&gt;</span></code></pre></div>
 <p>The technical average data can be visualized with ggpplot2.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Tech_avg_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Tech_rep_mean, <span class="dt">color =</span> Injection)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>Filter) <span class="op">+</span><span class="st"> </span><span class="kw">theme_bw</span>()</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Tech_rep_mean, <span class="dt">color =</span> Injection)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span><span class="st"> </span>Filter) <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</code></pre></div>
 <p><img src="tidyNano_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
 <p>In this experiment, a sample was read twice by the Nanosight and thus we can average the means by Injection to obtain a single mean value by using the <code>nanolyze</code> function again. Notice the different use of the <code>name</code> and <code>param_var</code> arguments.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data &lt;-<span class="st"> </span>Tech_avg_data <span class="op">%&gt;%</span><span class="st"> </span>
@@ -217,16 +219,16 @@
 <span class="co">#&gt; # ... with 2 more variables: Injection_sd &lt;dbl&gt;, Injection_se &lt;dbl&gt;</span></code></pre></div>
 <p>We can again use ggplot2 to visualize the mean injection data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Injection_mean, <span class="dt">color =</span> Filter)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Filter)</code></pre></div>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Injection_mean, <span class="dt">color =</span> Filter)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>Filter)</code></pre></div>
 <p><img src="tidyNano_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
 <p>We can also use dplyr to filter on values less than 300nm easily.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(particle_size <span class="op">&lt;</span><span class="dv">300</span>) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Injection_mean, <span class="dt">color =</span> Filter)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Filter) </code></pre></div>
+<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(particle_size <span class="op">&lt;</span><span class="dv">300</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> Injection_mean, <span class="dt">color =</span> Filter)) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>( <span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
+<span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>Filter) </code></pre></div>
 <div class="figure">
 <img src="tidyNano_files/figure-html/unnamed-chunk-10-1.png" alt="MY FIGURE CAPTION" width="700"><p class="caption">
 MY FIGURE CAPTION
@@ -248,7 +250,7 @@ MY FIGURE CAPTION
 <span class="co">#&gt; 2 std       10000 yes          1000        1.29e13</span></code></pre></div>
 <p>We can also use dplyr verbs before nanocount. To calculate the total number of particles less than 100nm the filter command can be used.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Injection_avg_data <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(particle_size <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(particle_size <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="../reference/nanocount.html">nanocount</a></span>(Sample, Dilution, Filter, 
             <span class="dt">param_var =</span> Injection_mean)
 <span class="co">#&gt; # A tibble: 2 x 5</span>

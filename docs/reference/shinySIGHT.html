@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Nanosight Data Import Function — nanoimport • tidyNano</title>
+<title>A Shiny Application — shinySIGHT • tidyNano</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="A Nanosight Data Import Function — nanoimport" />
+<meta property="og:title" content="A Shiny Application — shinySIGHT" />
 
-<meta property="og:description" content="This function allows you aggregate or summarize your data by groups." />
+<meta property="og:description" content="This function allows for interactive visualization of NTA data." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -97,62 +97,25 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A Nanosight Data Import Function</h1>
+    <h1>A Shiny Application</h1>
     
-    <div class="hidden name"><code>nanoimport.Rd</code></div>
+    <div class="hidden name"><code>shinySIGHT.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function allows you aggregate or summarize your data by groups.</p>
+    <p>This function allows for interactive visualization of NTA data.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nanoimport</span>(<span class='no'>file</span>, <span class='kw'>range</span> <span class='kw'>=</span> <span class='fl'>1000</span>, <span class='kw'>bin_width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>nm_start</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>auto_name</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>custom_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>file</th>
-      <td><p>A .csv file from a Malvern Nanosight machine.</p></td>
-    </tr>
-    <tr>
-      <th>range</th>
-      <td><p>The range of values (nm) used during NTA data acquisition, defaults to 1000.</p></td>
-    </tr>
-    <tr>
-      <th>bin_width</th>
-      <td><p>The bin width used during NTA data acquisition, defaults to 1.</p></td>
-    </tr>
-    <tr>
-      <th>nm_start</th>
-      <td><p>Starting measurement value (nm), defaults to 0.5nm</p></td>
-    </tr>
-    <tr>
-      <th>auto_name</th>
-      <td><p>Extracts sample and dilution data and appends to column header, defaults to FALSE.</p></td>
-    </tr>
-    <tr>
-      <th>custom_name</th>
-      <td><p>Append custom name to column header, defaults to NULL.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Dataframe of NTA data.</p>
-    
+    <pre class="usage"><span class='fu'>shinySIGHT</span>()</pre>
+        
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>
