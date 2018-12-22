@@ -2,6 +2,7 @@
 output: github_document
 ---
 # tidyNano <img src="man/figures/tidyNano.png" align="right" width = "120" />
+
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -58,4 +59,3 @@ tidy_data %>%
   facet_wrap(Injection ~ Filter)
 ```
 
-![](man/figures/unnamed-chunk-3-1.png)

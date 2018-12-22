@@ -82,5 +82,3 @@ tidy_data %>%
 ```
 
 ![](man/figures/unnamed-chunk-5-1.png)
-
-![](man/figures/unnamed-chunk-3-1.png)
