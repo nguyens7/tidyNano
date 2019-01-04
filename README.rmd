@@ -30,9 +30,10 @@ tidyNano functions (Purple) allow for easily extracting and converting raw NTA c
 
 The latest development version can be installed from github:
 
-```{r eval=FALSE, include=FALSE}
+```{r message=FALSE, warning=FALSE}
 # install.packages("devtools")
-devtools::install_github("nguyens7/tidyNano")
+
+# devtools::install_github("nguyens7/tidyNano")
 ```
 
 # tidyNano Example
