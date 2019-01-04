@@ -21,6 +21,13 @@ Installation
 
 The latest development version can be installed from github:
 
+```r
+# install.packages("devtools")
+
+devtools::install_github("nguyens7/tidyNano")
+```
+
+
 \# tidyNano Example
 -------------------
 
