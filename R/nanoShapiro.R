@@ -16,17 +16,18 @@ nanoShapiro <- function(df, ..., value) {
   value <- enquo(value)
 
 
-  df %>%
+  Shapiro_df <- df %>%
     dplyr::group_by(!!! group_var) %>%
     tidyr::nest() %>%
     dplyr::mutate(
-        Shapiro = purrr::map(data, ~stats::shapiro.test(pull(.x, quo_name(value)))),  # perform a normality test
-        glance = purrr::map(Shapiro, broom::glance)) %>%
-    tidyr::unnest(broom::glance, .drop = TRUE) %>%
-    dplyr::mutate(Normal_dist = dplyr::case_when(p.value >.05 ~ TRUE,
-                                   p.value <.05 ~ FALSE ),
-           Statistical_test = dplyr::case_when(Normal_dist == TRUE ~ "Perform parametric test",
-                                        Normal_dist == FALSE ~ "Perform non-parametric test"))
+      Shapiro = purrr::map(data, ~stats::shapiro.test(pull(.x, quo_name(value)))),
+      Shapiro_glance = purrr::map(Shapiro, broom::glance)) %>%
+    tidyr::unnest(Shapiro_glance, .drop = TRUE) %>%
+    dplyr::mutate(Normal_dist = dplyr::case_when(p.value > 0.05 ~ TRUE,
+                                                 p.value < 0.05 ~ FALSE),
+                  Statistical_test = dplyr::case_when(Normal_dist == TRUE ~ "Perform parametric test",
+                                                      Normal_dist == FALSE ~ "Perform non-parametric test"))
+
+  return(Shapiro_df)
 
 }
-
