@@ -13,7 +13,7 @@ shinySIGHT <- function() {
   options(shiny.maxRequestSize=30*1024^2)
 
   ui <- fluidPage(
-    theme = shinytheme("flatly"),
+    theme = shinythemes::shinytheme("flatly"),
 
     # Application title
     titlePanel("shinySIGHT"),
@@ -48,7 +48,7 @@ shinySIGHT <- function() {
 
         tabsetPanel(type = "tabs",
                     tabPanel("Plot", plotOutput("nanoPlot", width = "100%")),
-                    tabPanel("Interactive Plot", plotlyOutput("nanoPlotly", width = "100%")),
+                    tabPanel("Interactive Plot", plotly::plotlyOutput("nanoPlotly", width = "100%")),
                     fluidRow(DT::dataTableOutput("table"))
 
         )
@@ -107,13 +107,13 @@ shinySIGHT <- function() {
       } else {
 
         mydata() %>%
-          filter(Sample == sampfilt)
+          dplyr::filter(Sample == sampfilt)
       }
     })
 
     )
 
-    output$nanoPlot <- renderPlot({
+    output$nanoPlot <- shiny::renderPlot({
 
       if (is.null(mydata())) {
         return(NULL)
@@ -163,7 +163,7 @@ shinySIGHT <- function() {
     #
     # })
 
-    output$nanoPlotly <- renderPlotly({
+    output$nanoPlotly <- plotly::renderPlotly({
 
       if (is.null(mydata())) {
         return(NULL)
