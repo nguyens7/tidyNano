@@ -5,7 +5,7 @@ tidyNano <img src="https://raw.githubusercontent.com/nguyens7/tidyNano/master/ma
 
 tidyNano is an R package that imports raw NanoSight data and provides a framework to clean, analyze, and visualize nanoparticle analysis data. You can browse the source code on [GitHub](https://github.com/nguyens7/tidyNano).
 
-Check out our preprint on [BioRxiv](https://www.biorxiv.org/content/10.1101/503292v2)!
+Check out our manuscript in [PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218270)!
 
 Overview
 ========
