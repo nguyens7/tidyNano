@@ -86,66 +86,64 @@
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <p>The latest development version can be installed from github:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("devtools")</span>
-
-<span class="co"># devtools::install_github("nguyens7/tidyNano")</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("devtools")</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co"># devtools::install_github("nguyens7/tidyNano")</span></a></code></pre></div>
 <div id="tidynano-example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tidynano-example" class="anchor"></a># tidyNano Example</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyNano)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)
-
-file &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"beads.csv"</span>, <span class="dt">package =</span> <span class="st">"tidyNano"</span>)
-
-data &lt;-<span class="st"> </span><span class="kw"><a href="reference/nanoimport.html">nanoimport</a></span>(file)  
-
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(data)
-<span class="co">#&gt;   particle_size std_10000_yes_2_00 std_10000_yes_2_01 std_10000_yes_2_02</span>
-<span class="co">#&gt; 1           0.5                  0                  0                  0</span>
-<span class="co">#&gt; 2           1.5                  0                  0                  0</span>
-<span class="co">#&gt; 3           2.5                  0                  0                  0</span>
-<span class="co">#&gt; 4           3.5                  0                  0                  0</span>
-<span class="co">#&gt; 5           4.5                  0                  0                  0</span>
-<span class="co">#&gt; 6           5.5                  0                  0                  0</span>
-<span class="co">#&gt;   std_10000_no_2_00 std_10000_no_2_01 std_10000_no_2_02 std_10000_yes_1_00</span>
-<span class="co">#&gt; 1                 0                 0                 0                  0</span>
-<span class="co">#&gt; 2                 0                 0                 0                  0</span>
-<span class="co">#&gt; 3                 0                 0                 0                  0</span>
-<span class="co">#&gt; 4                 0                 0                 0                  0</span>
-<span class="co">#&gt; 5                 0                 0                 0                  0</span>
-<span class="co">#&gt; 6                 0                 0                 0                  0</span>
-<span class="co">#&gt;   std_10000_yes_1_01 std_10000_yes_1_02 std_10000_no_1_00</span>
-<span class="co">#&gt; 1                  0                  0                 0</span>
-<span class="co">#&gt; 2                  0                  0                 0</span>
-<span class="co">#&gt; 3                  0                  0                 0</span>
-<span class="co">#&gt; 4                  0                  0                 0</span>
-<span class="co">#&gt; 5                  0                  0                 0</span>
-<span class="co">#&gt; 6                  0                  0                 0</span>
-<span class="co">#&gt;   std_10000_no_1_01 std_10000_no_1_02</span>
-<span class="co">#&gt; 1                 0                 0</span>
-<span class="co">#&gt; 2                 0                 0</span>
-<span class="co">#&gt; 3                 0                 0</span>
-<span class="co">#&gt; 4                 0                 0</span>
-<span class="co">#&gt; 5                 0                 0</span>
-<span class="co">#&gt; 6                 0                 0</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data &lt;-<span class="st"> </span>data  <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="reference/nanotidy.html">nanotidy</a></span>(<span class="dt">sep_var =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Sample"</span>, <span class="st">"Dilution"</span>,<span class="st">"Filter"</span>,<span class="st">"Injection"</span>,<span class="st">"Tech_rep"</span>))
-
-<span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(tidy_data)
-<span class="co">#&gt;   particle_size Sample Dilution Filter Injection Tech_rep Count True_count</span>
-<span class="co">#&gt; 1           0.5    std    10000    yes         2        0     0          0</span>
-<span class="co">#&gt; 2           1.5    std    10000    yes         2        0     0          0</span>
-<span class="co">#&gt; 3           2.5    std    10000    yes         2        0     0          0</span>
-<span class="co">#&gt; 4           3.5    std    10000    yes         2        0     0          0</span>
-<span class="co">#&gt; 5           4.5    std    10000    yes         2        0     0          0</span>
-<span class="co">#&gt; 6           5.5    std    10000    yes         2        0     0          0</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tidy_data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> True_count, <span class="dt">color =</span> Tech_rep)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
-<span class="st">  </span><span class="kw">facet_wrap</span>(Injection <span class="op">~</span><span class="st"> </span>Filter)</code></pre></div>
-<div class="figure">
-<img src="https://raw.githubusercontent.com/nguyens7/tidyNano/master/man/figures/unnamed-chunk-5-1.png">
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyNano)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">file &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"beads.csv"</span>, <span class="dt">package =</span> <span class="st">"tidyNano"</span>)</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">data &lt;-<span class="st"> </span><span class="kw"><a href="reference/nanoimport.html">nanoimport</a></span>(file)  </a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(data)</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt;   particle_size std_10000_yes_2_00 std_10000_yes_2_01 std_10000_yes_2_02</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 1           0.5                  0                  0                  0</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 2           1.5                  0                  0                  0</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 3           2.5                  0                  0                  0</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 4           3.5                  0                  0                  0</span></a>
+<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; 5           4.5                  0                  0                  0</span></a>
+<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; 6           5.5                  0                  0                  0</span></a>
+<a class="sourceLine" id="cb2-16" data-line-number="16"><span class="co">#&gt;   std_10000_no_2_00 std_10000_no_2_01 std_10000_no_2_02 std_10000_yes_1_00</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17"><span class="co">#&gt; 1                 0                 0                 0                  0</span></a>
+<a class="sourceLine" id="cb2-18" data-line-number="18"><span class="co">#&gt; 2                 0                 0                 0                  0</span></a>
+<a class="sourceLine" id="cb2-19" data-line-number="19"><span class="co">#&gt; 3                 0                 0                 0                  0</span></a>
+<a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; 4                 0                 0                 0                  0</span></a>
+<a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 5                 0                 0                 0                  0</span></a>
+<a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; 6                 0                 0                 0                  0</span></a>
+<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt;   std_10000_yes_1_01 std_10000_yes_1_02 std_10000_no_1_00</span></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; 1                  0                  0                 0</span></a>
+<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; 2                  0                  0                 0</span></a>
+<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; 3                  0                  0                 0</span></a>
+<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt; 4                  0                  0                 0</span></a>
+<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; 5                  0                  0                 0</span></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt; 6                  0                  0                 0</span></a>
+<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt;   std_10000_no_1_01 std_10000_no_1_02</span></a>
+<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt; 1                 0                 0</span></a>
+<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt; 2                 0                 0</span></a>
+<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; 3                 0                 0</span></a>
+<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt; 4                 0                 0</span></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; 5                 0                 0</span></a>
+<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; 6                 0                 0</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">tidy_data &lt;-<span class="st"> </span>data  <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/nanotidy.html">nanotidy</a></span>(<span class="dt">sep_var =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Sample"</span>, <span class="st">"Dilution"</span>,<span class="st">"Filter"</span>,<span class="st">"Injection"</span>,<span class="st">"Tech_rep"</span>))</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(tidy_data)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;   particle_size Sample Dilution Filter Injection Tech_rep Count True_count</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 1           0.5    std    10000    yes         2        0     0          0</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 2           1.5    std    10000    yes         2        0     0          0</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 3           2.5    std    10000    yes         2        0     0          0</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 4           3.5    std    10000    yes         2        0     0          0</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 5           4.5    std    10000    yes         2        0     0          0</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 6           5.5    std    10000    yes         2        0     0          0</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">tidy_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> particle_size, <span class="dt">y =</span> True_count, <span class="dt">color =</span> Tech_rep)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_wrap</span>(Injection <span class="op">~</span><span class="st"> </span>Filter)</a></code></pre></div>
+<p><img src="https://raw.githubusercontent.com/nguyens7/tidyNano/master/man/figures/unnamed-chunk-5-1.png"></p>
 </div>
 </div>
   </div>
