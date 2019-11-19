@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">tidyNano</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.1</span>
       </span>
     </div>
 
@@ -76,6 +76,7 @@
 <div id="news-112019" class="section level1">
 <h1 class="hasAnchor">
 <a href="#news-112019" class="anchor"></a>News (11/2019)</h1>
+<p><code><a href="reference/nanolyze.html">nanolyze()</a></code> and <code><a href="reference/nanocount.html">nanocount()</a></code> both will <code>ungroup</code> data.</p>
 <p><code><a href="reference/nanoimport.html">nanoimport()</a></code> has just been updated to be more flexible and works with NTA versions 3.0 - 3.2! The function should be able to detect and import your data.</p>
 <p><strong>Nomenclature</strong><br>
 We recommend naming your files in <code>snake_case</code> so it’s conducive for processing with the <code><a href="reference/nanotidy.html">nanotidy()</a></code> function. With each sample we recommend adding important information so you can parse it out during analysis, be sure to influde the dilution value in the sample name if you do not enter it during the dilution entry box during acquisition. For example you can name your files using the general formula <code>SampleID_Treatment_1500_</code>. Be sure to leave a <code>_</code> at the end so the NTA software will append your files with a numerical count (00,01,02…) which will serve as way to track your technical replicates.</p>
@@ -120,20 +121,20 @@ We recommend naming your files in <code>snake_case</code> so it’s conducive fo
 <a class="sourceLine" id="cb2-20" data-line-number="20"><span class="co">#&gt; 4                 0                 0                 0                  0</span></a>
 <a class="sourceLine" id="cb2-21" data-line-number="21"><span class="co">#&gt; 5                 0                 0                 0                  0</span></a>
 <a class="sourceLine" id="cb2-22" data-line-number="22"><span class="co">#&gt; 6                 0                 0                 0                  0</span></a>
-<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt;   std_10000_yes_1_01 std_10000_yes_1_02 std_10000_no_1_00</span></a>
-<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; 1                  0                  0                 0</span></a>
-<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; 2                  0                  0                 0</span></a>
-<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; 3                  0                  0                 0</span></a>
-<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt; 4                  0                  0                 0</span></a>
-<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; 5                  0                  0                 0</span></a>
-<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt; 6                  0                  0                 0</span></a>
-<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt;   std_10000_no_1_01 std_10000_no_1_02</span></a>
-<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt; 1                 0                 0</span></a>
-<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt; 2                 0                 0</span></a>
-<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; 3                 0                 0</span></a>
-<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt; 4                 0                 0</span></a>
-<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; 5                 0                 0</span></a>
-<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; 6                 0                 0</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-23" data-line-number="23"><span class="co">#&gt;   std_10000_yes_1_01 std_10000_yes_1_02 std_10000_no_1_00 std_10000_no_1_01</span></a>
+<a class="sourceLine" id="cb2-24" data-line-number="24"><span class="co">#&gt; 1                  0                  0                 0                 0</span></a>
+<a class="sourceLine" id="cb2-25" data-line-number="25"><span class="co">#&gt; 2                  0                  0                 0                 0</span></a>
+<a class="sourceLine" id="cb2-26" data-line-number="26"><span class="co">#&gt; 3                  0                  0                 0                 0</span></a>
+<a class="sourceLine" id="cb2-27" data-line-number="27"><span class="co">#&gt; 4                  0                  0                 0                 0</span></a>
+<a class="sourceLine" id="cb2-28" data-line-number="28"><span class="co">#&gt; 5                  0                  0                 0                 0</span></a>
+<a class="sourceLine" id="cb2-29" data-line-number="29"><span class="co">#&gt; 6                  0                  0                 0                 0</span></a>
+<a class="sourceLine" id="cb2-30" data-line-number="30"><span class="co">#&gt;   std_10000_no_1_02</span></a>
+<a class="sourceLine" id="cb2-31" data-line-number="31"><span class="co">#&gt; 1                 0</span></a>
+<a class="sourceLine" id="cb2-32" data-line-number="32"><span class="co">#&gt; 2                 0</span></a>
+<a class="sourceLine" id="cb2-33" data-line-number="33"><span class="co">#&gt; 3                 0</span></a>
+<a class="sourceLine" id="cb2-34" data-line-number="34"><span class="co">#&gt; 4                 0</span></a>
+<a class="sourceLine" id="cb2-35" data-line-number="35"><span class="co">#&gt; 5                 0</span></a>
+<a class="sourceLine" id="cb2-36" data-line-number="36"><span class="co">#&gt; 6                 0</span></a></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">tidy_data &lt;-<span class="st"> </span>data  <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/nanotidy.html">nanotidy</a></span>(<span class="dt">sep_var =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Sample"</span>, <span class="st">"Dilution"</span>,<span class="st">"Filter"</span>,<span class="st">"Injection"</span>,<span class="st">"Tech_rep"</span>))</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"></a>

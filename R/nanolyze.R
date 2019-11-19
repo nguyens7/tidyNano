@@ -34,7 +34,8 @@ nanolyze <- function(df, ..., name = "Param", param_var, na.rm = TRUE) {
                 !! sd := sd(!! param_var, na.rm = na.rm),
                 !! se := sd(!! param_var, na.rm = na.rm) /
                           sqrt(length(na.omit(!!param_var)))
-              )
+              ) %>%
+    dplyr::ungroup()
 
     }
 

@@ -13,6 +13,8 @@ ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218270)\
 
 # News (11/2019)
 
+`nanolyze()` and `nanocount()` both will `ungroup` data.
+
 `nanoimport()` has just been updated to be more flexible and works with
 NTA versions 3.0 - 3.2\! The function should be able to detect and
 import your data.
@@ -82,20 +84,20 @@ head(data)
 #> 4                 0                 0                 0                  0
 #> 5                 0                 0                 0                  0
 #> 6                 0                 0                 0                  0
-#>   std_10000_yes_1_01 std_10000_yes_1_02 std_10000_no_1_00
-#> 1                  0                  0                 0
-#> 2                  0                  0                 0
-#> 3                  0                  0                 0
-#> 4                  0                  0                 0
-#> 5                  0                  0                 0
-#> 6                  0                  0                 0
-#>   std_10000_no_1_01 std_10000_no_1_02
-#> 1                 0                 0
-#> 2                 0                 0
-#> 3                 0                 0
-#> 4                 0                 0
-#> 5                 0                 0
-#> 6                 0                 0
+#>   std_10000_yes_1_01 std_10000_yes_1_02 std_10000_no_1_00 std_10000_no_1_01
+#> 1                  0                  0                 0                 0
+#> 2                  0                  0                 0                 0
+#> 3                  0                  0                 0                 0
+#> 4                  0                  0                 0                 0
+#> 5                  0                  0                 0                 0
+#> 6                  0                  0                 0                 0
+#>   std_10000_no_1_02
+#> 1                 0
+#> 2                 0
+#> 3                 0
+#> 4                 0
+#> 5                 0
+#> 6                 0
 ```
 
 ``` r

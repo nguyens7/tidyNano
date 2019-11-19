@@ -25,7 +25,8 @@ nanocount <- function(df, ..., name = "Particle", param_var, na.rm = TRUE) {
   df %>%
     dplyr::group_by(!!! group_var) %>%
     dplyr::summarise(!!N := length(na.omit(!!param_var)),
-              !!total := sum(!!param_var, na.rm = na.rm))
+              !!total := sum(!!param_var, na.rm = na.rm)) %>%
+    dplyr::ungroup()
 
 }
 

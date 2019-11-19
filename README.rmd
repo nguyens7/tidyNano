@@ -20,6 +20,8 @@ Check out our manuscript in [PLOS ONE](https://journals.plos.org/plosone/article
 
 
 # News (11/2019)  
+`nanolyze()` and `nanocount()` both will `ungroup` data.
+
 `nanoimport()` has just been updated to be more flexible and works with NTA versions 3.0 - 3.2!  The function should be able to detect and import your data.
 
 **Nomenclature**  
