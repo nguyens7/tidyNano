@@ -18,12 +18,19 @@ tidyNano is an R package that imports raw NanoSight data and provides a framewor
 
 Check out our manuscript in [PLOS ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218270)!
 
+<img src="https://raw.githubusercontent.com/nguyens7/tidyNano/master/man/figures/tidyNano_PLOS_ONE_site_image.png" align="center" width = "600"/>  
+
+
+
+
+A representative video of NTA data of murine plasma exosomes from our paper.  
+
 
 ![NTA of murine plasma exosomes](https://media.giphy.com/media/Ah2T3hhQd0cf7QQ7c9/giphy.gif)
 
 
 # News (1/2020)  
-NAdded new gifs illustrating tidyNano package.
+Added new gifs illustrating tidyNano package.
 
 `nanolyze()` and `nanocount()` both will `ungroup` data.
 
