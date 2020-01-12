@@ -51,7 +51,8 @@ tidyNano functions (Purple) allow for easily extracting and converting raw NTA c
 
 <img src="https://raw.githubusercontent.com/nguyens7/tidyNano/master/man/figures/tidyNano_workflow.png" align="center" width = "400"/>
 
-tidyNano also includes a Shiny app named shinySIGHT for interactive visualization of NTA data.  
+tidyNano also includes a Shiny app named shinySIGHT for interactive visualization of NTA data.   
+
 ![shinySIGHT](https://media.giphy.com/media/Dr3zmORxOaJTcRn1Gj/giphy.gif)
 
 # Installation

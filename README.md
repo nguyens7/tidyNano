@@ -61,7 +61,8 @@ data.
 
 tidyNano also includes a Shiny app named shinySIGHT for interactive
 visualization of NTA
-data.  
+data.
+
 ![shinySIGHT](https://media.giphy.com/media/Dr3zmORxOaJTcRn1Gj/giphy.gif)
 
 # Installation
