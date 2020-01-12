@@ -11,7 +11,12 @@ You can browse the source code on
 Check out our manuscript in [PLOS
 ONE](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0218270)\!
 
-# News (11/2019)
+![NTA of murine plasma
+exosomes](https://media.giphy.com/media/Ah2T3hhQd0cf7QQ7c9/giphy.gif)
+
+# News (1/2020)
+
+NAdded new gifs illustrating tidyNano package.
 
 `nanolyze()` and `nanocount()` both will `ungroup` data.
 
@@ -48,6 +53,11 @@ application (shinySIGHT) for visualizing
 data.
 
 <img src="https://raw.githubusercontent.com/nguyens7/tidyNano/master/man/figures/tidyNano_workflow.png" align="center" width = "400"/>
+
+tidyNano also includes a Shiny app named shinySIGHT for interactive
+visualization of NTA
+data.  
+![shinySIGHT](https://media.giphy.com/media/Dr3zmORxOaJTcRn1Gj/giphy.gif)
 
 # Installation
 
