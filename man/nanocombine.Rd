@@ -4,8 +4,14 @@
 \alias{nanocombine}
 \title{A Nanosight  Import Function}
 \usage{
-nanocombine(dir = "", range = 1000, bin_width = 1, nm_start = 0.5,
-  auto_name = FALSE, custom_name = NULL)
+nanocombine(
+  dir = "",
+  range = 1000,
+  bin_width = 1,
+  nm_start = 0.5,
+  auto_name = FALSE,
+  custom_name = NULL
+)
 }
 \arguments{
 \item{dir}{The directory where files are located, defaults to global working directory}

@@ -30,7 +30,7 @@ Imports:
     readr,
     ggplot2,
     stringr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Suggests: 
     knitr,
     devtools,

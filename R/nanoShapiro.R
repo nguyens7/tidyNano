@@ -26,7 +26,8 @@ nanoShapiro <- function(df, ..., value) {
     dplyr::mutate(Normal_dist = dplyr::case_when(p.value > 0.05 ~ TRUE,
                                                  p.value < 0.05 ~ FALSE),
                   Statistical_test = dplyr::case_when(Normal_dist == TRUE ~ "Perform parametric test",
-                                                      Normal_dist == FALSE ~ "Perform non-parametric test"))
+                                                      Normal_dist == FALSE ~ "Perform non-parametric test")) %>%
+    dplyr::ungroup()
 
   return(Shapiro_df)
 
