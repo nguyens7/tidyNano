@@ -4,7 +4,7 @@
 \alias{nanolyze}
 \title{A Summarization Function}
 \usage{
-nanolyze(df, ..., name = "Param", param_var, na.rm = TRUE)
+nanolyze(df, ..., name = "Param", param_var, na.rm = TRUE, sci_not = FALSE)
 }
 \arguments{
 \item{df}{A dataframe.}
@@ -16,6 +16,8 @@ nanolyze(df, ..., name = "Param", param_var, na.rm = TRUE)
 \item{param_var}{The numerical value that you want to summarize.}
 
 \item{na.rm}{Argument to ignore 'NA' values, defaults to TRUE.}
+
+\item{sci_not}{Argument to return a separate column with scientific notation, defaults to FALSE.}
 }
 \value{
 Summarized values \code{parm_var} grouped by \code{...}.

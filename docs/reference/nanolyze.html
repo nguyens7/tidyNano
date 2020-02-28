@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidyNano</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.2</span>
       </span>
     </div>
 
@@ -112,7 +112,7 @@
     <p>This function allows you aggregate or summarize your data by groups.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>nanolyze</span>(<span class='no'>df</span>, <span class='no'>...</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Param"</span>, <span class='no'>param_var</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>nanolyze</span>(<span class='no'>df</span>, <span class='no'>...</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"Param"</span>, <span class='no'>param_var</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>sci_not</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,6 +136,10 @@
     <tr>
       <th>na.rm</th>
       <td><p>Argument to ignore 'NA' values, defaults to TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>sci_not</th>
+      <td><p>Argument to return a separate column with scientific notation, defaults to FALSE.</p></td>
     </tr>
     </table>
 
