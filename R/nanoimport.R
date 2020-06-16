@@ -109,6 +109,7 @@ nanoimport <- function(file,
     dplyr::mutate_all(dilute_correction) #adjust dilution factor if entered in during acquisition
   # nanotidy() will correct for this with the `True_count` column
   part_size %>%
-    dplyr::bind_cols(NTA_data)
+    dplyr::bind_cols(NTA_data) %>%
+    dplyr::select_if(~ !any(is.na(.))) #removes NA column
 
 }
