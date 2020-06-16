@@ -19,15 +19,18 @@ paper.
 ![NTA of murine plasma
 exosomes](https://media.giphy.com/media/Ah2T3hhQd0cf7QQ7c9/giphy.gif)
 
-# News (1/2020)
+# News (6/2020)
 
-Added new gifs illustrating tidyNano package.
+Added more [reprexes](https://www.tidyverse.org/help/) in the README to
+assist in importing data.
 
-`nanolyze()` and `nanocount()` both will `ungroup` data.
+Fixed `custom_name` argument in `nanoimport()` function.
 
 `nanoimport()` has just been updated to be more flexible and works with
-NTA versions 3.0 - 3.2\! The function should be able to detect and
+NTA versions 3.0 - 3.4\! The function should be able to detect and
 import your data.
+
+`nanolyze()` and `nanocount()` both will `ungroup` data.
 
 **Nomenclature**  
 We recommend naming your files in `snake_case` so it’s conducive for
@@ -114,6 +117,125 @@ head(data)
 #> 4                 0
 #> 5                 0
 #> 6                 0
+```
+
+`nanoimport` is a function that extracts the particle data from raw a
+nanosight .csv file and creates a dataframe that is suitable for
+cleaning within R. *Note:* This assumes you added the dilution factor
+when you named your samples during acquistion.
+
+``` r
+data <- nanoimport(file) 
+#> NTA version: 3.2
+#> Sample name:
+#> Dilution line no: 42
+#> Warning in function_list[[k]](value): NAs introduced by coercion
+#> Dilution factor detected: NA
+#> Auto name = FALSE
+#> Custom name: NULL
+#> Dilution value: 1 (Didn't parse)
+
+head(data)
+#>   particle_size std_10000_yes_2_00 std_10000_yes_2_01 std_10000_yes_2_02
+#> 1           0.5                  0                  0                  0
+#> 2           1.5                  0                  0                  0
+#> 3           2.5                  0                  0                  0
+#> 4           3.5                  0                  0                  0
+#> 5           4.5                  0                  0                  0
+#> 6           5.5                  0                  0                  0
+#>   std_10000_no_2_00 std_10000_no_2_01 std_10000_no_2_02 std_10000_yes_1_00
+#> 1                 0                 0                 0                  0
+#> 2                 0                 0                 0                  0
+#> 3                 0                 0                 0                  0
+#> 4                 0                 0                 0                  0
+#> 5                 0                 0                 0                  0
+#> 6                 0                 0                 0                  0
+#>   std_10000_yes_1_01 std_10000_yes_1_02 std_10000_no_1_00 std_10000_no_1_01
+#> 1                  0                  0                 0                 0
+#> 2                  0                  0                 0                 0
+#> 3                  0                  0                 0                 0
+#> 4                  0                  0                 0                 0
+#> 5                  0                  0                 0                 0
+#> 6                  0                  0                 0                 0
+#>   std_10000_no_1_02
+#> 1                 0
+#> 2                 0
+#> 3                 0
+#> 4                 0
+#> 5                 0
+#> 6                 0
+```
+
+### nanoimport without dilution factor in the sample name
+
+If you didn’t include your dilution factor in the sample name you can
+use the argument `auto_name == TRUE` within the `nanoimport()` function.
+
+``` r
+file2 <- system.file("extdata", "beads2.csv", package = "tidyNano")
+
+data2 <- nanoimport(file2, auto_name = TRUE)
+#> NTA version: 3.4
+#> Sample name:
+#> Dilution line no: 44
+#> Dilution factor detected: 10000
+#> Auto name: _10000
+#> Custom name: NULL
+#> Dilution value: 10000
+
+head(data2)
+#>   particle_size stdv34_00_10000 stdv34_01_10000 stdv34_02_10000 stdv34_03_10000
+#> 1           0.5               0               0               0               0
+#> 2           1.5               0               0               0               0
+#> 3           2.5               0               0               0               0
+#> 4           3.5               0               0               0               0
+#> 5           4.5               0               0               0               0
+#> 6           5.5               0               0               0               0
+#>   stdv34_04_10000 NA_10000
+#> 1               0       NA
+#> 2               0       NA
+#> 3               0       NA
+#> 4               0       NA
+#> 5               0       NA
+#> 6               0       NA
+```
+
+You can even add a custom name to append extra information to your
+sample columns using the `custom_name()`
+argument.
+
+``` r
+custom_name_data2 <- nanoimport(file2, auto_name = TRUE, custom_name = "YourLabelHere")
+#> NTA version: 3.4
+#> Sample name:
+#> Dilution line no: 44
+#> Dilution factor detected: 10000
+#> Auto name: _YourLabelHere_10000
+#> Custom name: YourLabelHere
+#> Dilution value: 10000
+
+head(custom_name_data2)
+#>   particle_size stdv34_00_YourLabelHere_10000 stdv34_01_YourLabelHere_10000
+#> 1           0.5                             0                             0
+#> 2           1.5                             0                             0
+#> 3           2.5                             0                             0
+#> 4           3.5                             0                             0
+#> 5           4.5                             0                             0
+#> 6           5.5                             0                             0
+#>   stdv34_02_YourLabelHere_10000 stdv34_03_YourLabelHere_10000
+#> 1                             0                             0
+#> 2                             0                             0
+#> 3                             0                             0
+#> 4                             0                             0
+#> 5                             0                             0
+#> 6                             0                             0
+#>   stdv34_04_YourLabelHere_10000 NA_YourLabelHere_10000
+#> 1                             0                     NA
+#> 2                             0                     NA
+#> 3                             0                     NA
+#> 4                             0                     NA
+#> 5                             0                     NA
+#> 6                             0                     NA
 ```
 
 ``` r

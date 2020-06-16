@@ -61,7 +61,7 @@ nanoimport <- function(file,
 
   }else if(auto_name == TRUE && is.null(custom_name) ){
 
-    gen_auto_name <- base::paste0("_", sample_name, "_", dilution)
+    gen_auto_name <- base::paste0("_", dilution)
 
     message(glue::glue("Auto name: {gen_auto_name}
                        Custom name: NULL
@@ -69,7 +69,7 @@ nanoimport <- function(file,
 
   }else if(auto_name == TRUE ){
 
-    gen_auto_name <- base::paste0("_", custom_name, "_", sample_name, "_", dilution)
+    gen_auto_name <- base::paste0("_",custom_name, "_", sample_name, dilution)
 
     message(glue::glue("Auto name: {gen_auto_name}
                        Custom name: {custom_name}

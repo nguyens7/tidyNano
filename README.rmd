@@ -29,12 +29,14 @@ A representative video of NTA data of murine plasma exosomes from our paper.
 ![NTA of murine plasma exosomes](https://media.giphy.com/media/Ah2T3hhQd0cf7QQ7c9/giphy.gif)
 
 
-# News (1/2020)  
-Added new gifs illustrating tidyNano package.
+# News (6/2020)  
+Added more [reprexes](https://www.tidyverse.org/help/) in the README to assist in importing data.
+
+Fixed `custom_name` argument in `nanoimport()` function.
+
+`nanoimport()` has just been updated to be more flexible and works with NTA versions 3.0 - 3.4!  The function should be able to detect and import your data.
 
 `nanolyze()` and `nanocount()` both will `ungroup` data.
-
-`nanoimport()` has just been updated to be more flexible and works with NTA versions 3.0 - 3.2!  The function should be able to detect and import your data.
 
 **Nomenclature**  
 We recommend naming your files in `snake_case` so it's conducive for processing with the `nanotidy()` function.  With each sample we recommend adding important information so you can parse it out during analysis, be sure to influde the dilution value in the sample name if you do not enter it during the dilution entry box during acquisition.  For example you can name your files using the general formula `SampleID_Treatment_1500_`.  Be sure to leave a `_` at the end so the NTA software will append your files with a numerical count (00,01,02...) which will serve as way to track your technical replicates.
@@ -78,6 +80,32 @@ data <- nanoimport(file)
 
 head(data)
 ```
+
+
+`nanoimport` is a function that extracts the particle data from raw a nanosight .csv file and creates a dataframe that is suitable for cleaning within R. *Note:* This assumes you added the dilution factor when you named your samples during acquistion.
+```{r}
+data <- nanoimport(file) 
+
+head(data)
+```
+
+
+### nanoimport without dilution factor in the sample name
+If you didn't include your dilution factor in the sample name you can use the argument `auto_name == TRUE` within the `nanoimport()` function.  
+```{r}
+file2 <- system.file("extdata", "beads2.csv", package = "tidyNano")
+
+data2 <- nanoimport(file2, auto_name = TRUE)
+
+head(data2)
+```
+You can even add a custom name to append extra information to your sample columns using the `custom_name()` argument.
+```{r}
+custom_name_data2 <- nanoimport(file2, auto_name = TRUE, custom_name = "YourLabelHere")
+
+head(custom_name_data2)
+```
+
 
 ```{r}
 tidy_data <- data  %>% 

@@ -34,12 +34,31 @@ file <- system.file("extdata", "beads.csv", package = "tidyNano")
 
 read.csv(file) %>% head()
 ```
-`nanoimport` is a function that extracts the particle data from raw a nanosight .csv file and creates a dataframe that is suitable for cleaning within R.
+`nanoimport` is a function that extracts the particle data from raw a nanosight .csv file and creates a dataframe that is suitable for cleaning within R. *Note:* This assumes you added the dilution factor when you named your samples during acquistion.
 ```{r}
 data <- nanoimport(file) 
 
 head(data)
 ```
+
+
+### nanoimport without dilution factor in the sample name
+If you didn't include your dilution factor in the sample name you can use the argument `auto_name == TRUE` within the `nanoimport()` function.  
+```{r}
+file2 <- system.file("extdata", "beads2.csv", package = "tidyNano")
+
+data2 <- nanoimport(file2, auto_name = TRUE)
+
+head(data2)
+```
+You can even add a custom name to append extra information to your sample columns using the `custom_name()` argument.
+```{r}
+custom_name_data2 <- nanoimport(file2, auto_name = TRUE, custom_name = "YourLabelHere")
+
+head(custom_name_data2)
+```
+
+
 
 ## nanotidy
 `nanotidy` is a function that facilitates the conversion of a dataframe to make it tidy for easy data visualization with ggplot2 and data manipulation with dplyr.
