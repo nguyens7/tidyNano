@@ -19,12 +19,13 @@ paper.
 ![NTA of murine plasma
 exosomes](https://media.giphy.com/media/Ah2T3hhQd0cf7QQ7c9/giphy.gif)
 
-# News (6/2020)
+# News (7/2020)
 
 Added more [reprexes](https://www.tidyverse.org/help/) in the README to
 assist in importing data.
 
-Fixed `custom_name` argument in `nanoimport()` function.
+Fixed `custom_name` argument in `nanoimport()` function and
+`nanocombine()` function.
 
 `nanoimport()` has just been updated to be more flexible and works with
 NTA versions 3.0 - 3.4\! The function should be able to detect and
@@ -191,13 +192,13 @@ head(data2)
 #> 4           3.5               0               0               0               0
 #> 5           4.5               0               0               0               0
 #> 6           5.5               0               0               0               0
-#>   stdv34_04_10000 NA_10000
-#> 1               0       NA
-#> 2               0       NA
-#> 3               0       NA
-#> 4               0       NA
-#> 5               0       NA
-#> 6               0       NA
+#>   stdv34_04_10000
+#> 1               0
+#> 2               0
+#> 3               0
+#> 4               0
+#> 5               0
+#> 6               0
 ```
 
 You can even add a custom name to append extra information to your
@@ -229,13 +230,13 @@ head(custom_name_data2)
 #> 4                             0                             0
 #> 5                             0                             0
 #> 6                             0                             0
-#>   stdv34_04_YourLabelHere_10000 NA_YourLabelHere_10000
-#> 1                             0                     NA
-#> 2                             0                     NA
-#> 3                             0                     NA
-#> 4                             0                     NA
-#> 5                             0                     NA
-#> 6                             0                     NA
+#>   stdv34_04_YourLabelHere_10000
+#> 1                             0
+#> 2                             0
+#> 3                             0
+#> 4                             0
+#> 5                             0
+#> 6                             0
 ```
 
 ``` r

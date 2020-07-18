@@ -29,10 +29,11 @@ A representative video of NTA data of murine plasma exosomes from our paper.
 ![NTA of murine plasma exosomes](https://media.giphy.com/media/Ah2T3hhQd0cf7QQ7c9/giphy.gif)
 
 
-# News (6/2020)  
+# News (7/2020)  
+
 Added more [reprexes](https://www.tidyverse.org/help/) in the README to assist in importing data.
 
-Fixed `custom_name` argument in `nanoimport()` function.
+Fixed `custom_name` argument in `nanoimport()` function and `nanocombine()` function.
 
 `nanoimport()` has just been updated to be more flexible and works with NTA versions 3.0 - 3.4!  The function should be able to detect and import your data.
 

@@ -4,23 +4,10 @@
 \alias{nanocombine}
 \title{A Nanosight  Import Function}
 \usage{
-nanocombine(
-  dir = "",
-  range = 1000,
-  bin_width = 1,
-  nm_start = 0.5,
-  auto_name = FALSE,
-  custom_name = NULL
-)
+nanocombine(dir = "", auto_name = FALSE, custom_name = NULL)
 }
 \arguments{
 \item{dir}{The directory where files are located, defaults to global working directory}
-
-\item{range}{The range of particle size values (nm) used during NTA data acquisition, defaults to 1000.}
-
-\item{bin_width}{The bin width used during NTA data acquisition, defaults to 1.}
-
-\item{nm_start}{Starting measurement value (nm), defaults to 0.5nm}
 
 \item{auto_name}{Extracts sample and dilution data and appends to column header, defaults to FALSE.}
 
