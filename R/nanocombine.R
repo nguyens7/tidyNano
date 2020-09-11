@@ -23,7 +23,7 @@ nanocombine <- function(dir = "", auto_name = FALSE, custom_name = NULL){
                                                              auto_name = auto_name,
                                                              custom_name = custom_name)) %>%
     dplyr::bind_cols(.name_repair = "minimal") %>%
-    dplyr::rename(particle_size = `particle_size...1`)
+    dplyr::rename(particle_size = dplyr::starts_with(`particle_size`))
 
   complete_df
 }
