@@ -20,10 +20,12 @@ nanocombine <- function(dir = "", auto_name = FALSE, custom_name = NULL){
   message(glue::glue("Detected the following files {csv_files}"))
 
   complete_df <- purrr::map(csv_files, ~tidyNano::nanoimport(file = .x,
-                                                             auto_name = auto_name,
-                                                             custom_name = custom_name)) %>%
-    dplyr::bind_cols(.name_repair = "minimal") %>%
-    dplyr::rename(particle_size = dplyr::starts_with(`particle_size`))
+                                         auto_name = auto_name,
+                                         custom_name = custom_name) %>%
+                                rename(particle_size = 1) # fixes first column
+                            ) %>%
+    dplyr::bind_cols(.name_repair = "minimal")
+
 
   complete_df
 }
