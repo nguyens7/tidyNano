@@ -3,7 +3,7 @@ Type: Package
 Title: A framework to Tidy and Analyze Nanoparticle Data
 Version: 0.1.2.3
 Authors@R: person("Sean", "L.", "Nguyen", role = c("aut", "cre"), email = "nguyens7@msu.edu")
-Maintainer: Sean Nguyen <nguyens7@msu.edu>
+Maintainer: Sean Nguyen <seanlnguyen7@gmail.com>
 Description: A framework to clean, calculate summary statistics, 
     and plot raw Nanosight data.  The package utilizes the principles of 
     the tidyverse to properly format data in a 'tidy' format such that rows represent 

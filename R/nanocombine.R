@@ -6,7 +6,7 @@
 #' @param custom_name Append custom name to column header, defaults to NULL.
 #' @return Dataframe of NTA data.
 #' @keywords import, load, extract
-#' @import dplyr
+#' @import dplyr purrr
 #' @export
 
 
@@ -20,11 +20,10 @@ nanocombine <- function(dir = "", auto_name = FALSE, custom_name = NULL){
   message(glue::glue("Detected the following files {csv_files}"))
 
   complete_df <- purrr::map(csv_files, ~tidyNano::nanoimport(file = .x,
-                                         auto_name = auto_name,
-                                         custom_name = custom_name) %>%
-                                rename(particle_size = 1) # fixes first column
-                            ) %>%
-    dplyr::bind_cols(.name_repair = "minimal")
+                                                             auto_name = auto_name,
+                                                             custom_name = custom_name) %>%
+                              rename(particle_size = 1)) %>% # fixes first column
+    purrr::reduce(dplyr::left_join, by = "particle_size")
 
 
   complete_df

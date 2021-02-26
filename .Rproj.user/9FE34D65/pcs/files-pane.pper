@@ -1,9 +1,9 @@
 {
-    "path" : "~/Library/Mobile Documents/com~apple~CloudDocs/R/tidyNano",
-    "sortOrder" : [
+    "path": "~/Library/Mobile Documents/com~apple~CloudDocs/R/tidyNano",
+    "sortOrder": [
         {
-            "ascending" : true,
-            "columnIndex" : 2
+            "columnIndex": 2,
+            "ascending": true
         }
     ]
 }
